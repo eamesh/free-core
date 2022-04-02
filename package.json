@@ -23,6 +23,7 @@
     "eslint-plugin-n": "14",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^8.5.0",
+    "naive-ui": "^2.27.0",
     "postcss": "^8.4.12",
     "postcss-html": "^1.3.0",
     "sass": "^1.49.11",
@@ -32,6 +33,7 @@
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "^4.5.4",
+    "vfonts": "^0.0.3",
     "vite": "^2.9.0",
     "vue-tsc": "^0.29.8"
   }
