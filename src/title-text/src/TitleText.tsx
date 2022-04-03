@@ -1,4 +1,4 @@
-import { FreeActionTitle } from 'free-layout/core';
+import { FreeActionTitle } from 'free-core/core';
 import { TextAlignCenter20Regular, TextAlignLeft20Regular, TextFont16Filled, TextFont20Regular } from '@vicons/fluent';
 import { FormRules, NButton, NCheckbox, NColorPicker, NDivider, NForm, NFormItem, NIcon, NInput, NRadioButton, NRadioGroup, NSpace, NText } from 'naive-ui';
 import { computed, CSSProperties, defineComponent, ref, unref } from 'vue';

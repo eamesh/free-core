@@ -1,7 +1,7 @@
-import { useFree } from 'free-layout/core/src/hooks/free';
+import { useFree } from 'free-core/core/src/hooks/free';
 import { NButton, NColorPicker, NDivider, NForm, NFormItem, NInput, NRadio, NRadioGroup, NSpace, NText } from 'naive-ui';
 import { defineComponent, ref, unref, watch } from 'vue';
-import { FreeActionTitle } from 'free-layout/core';
+import { FreeActionTitle } from 'free-core/core';
 
 const DEFAULT_COLOR = '#f7f8fa';
 

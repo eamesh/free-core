@@ -9,28 +9,7 @@ export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
-      'free-layout': resolve(__dirname, './src')
-    }
-  },
-  build: {
-    outDir: 'lib',
-    lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'free-layout',
-      fileName: (formats) => `${formats}/index.js`
-    },
-    rollupOptions: {
-      external: [
-        'vue',
-        'naive-ui'
-      ],
-      output: {
-        sourcemap: true,
-        globals: {
-          vue: 'Vue',
-          'naive-ui': 'naive-ui'
-        }
-      }
+      'free-core': resolve(__dirname, './src')
     }
   }
 });

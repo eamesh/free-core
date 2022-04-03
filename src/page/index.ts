@@ -1,4 +1,4 @@
-import { CoreWidget } from 'free-layout/core/src/interface';
+import { CoreWidget } from 'free-core/core/src/interface';
 import { Window24Regular } from '@vicons/fluent';
 import { markRaw } from 'vue';
 import FreePage from './src/Page';

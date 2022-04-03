@@ -1,4 +1,4 @@
-import { useFree } from 'free-layout/core/src/hooks/free';
+import { useFree } from 'free-core/core/src/hooks/free';
 import { NDivider, NImage, NSpace } from 'naive-ui';
 import { computed, defineComponent } from 'vue';
 import FreeHeader from '../';
@@ -8,7 +8,7 @@ import Signal from '../assets/signal.png';
 
 import './style.scss';
 import { useAction } from './action';
-import { usePage } from 'free-layout/core/src/hooks/page';
+import { usePage } from 'free-core/core/src/hooks/page';
 
 export default defineComponent({
   name: 'FreeHeader',

@@ -1,6 +1,6 @@
 {
   "name": "free-core",
-  "version": "1.0.4-dev",
+  "version": "1.0.5-dev",
   "repository": {
     "type": "git",
     "url": "https://github.com/eamesh/free.git"
@@ -20,8 +20,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "build:lib": "rimraf lib && pnpm build && pnpm build:dts && rimraf tsconfig.node.tsbuildinfo",
-    "build:example": "node ./scripts/build-example.js",
+    "build:lib": "rimraf lib && node ./scripts/build-lib.js && pnpm build:dts && rimraf tsconfig.node.tsbuildinfo",
     "preview": "vite preview",
     "lint:eslint": "eslint \"src/**/*.{vue,js,ts,tsx}\" --fix",
     "lint:stylelint": "stylelint --fix \"**/*.{vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",

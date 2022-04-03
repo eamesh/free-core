@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "paths": {
-      "free-layout/*": [
+      "free-core/*": [
         "./src/*"
       ]
     },
