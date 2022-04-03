@@ -1,4 +1,4 @@
-import { Widget } from 'free-core/core/src/interface';
+import { Widget } from '../core/src/interface';
 import { markRaw } from 'vue';
 import TitleText from './src/TitleText';
 import Thumb from './assets/thumb.png';

@@ -1,4 +1,4 @@
-import { CoreWidget } from 'free-core/core/src/interface';
+import { CoreWidget } from '../core/src/interface';
 import { markRaw } from 'vue';
 import FreeFooter from './src/Footer';
 

@@ -1,4 +1,4 @@
-import { CoreWidget } from 'free-core/core/src/interface';
+import { CoreWidget } from '../core/src/interface';
 import { PanelSeparateWindow20Regular } from '@vicons/fluent';
 import { markRaw } from 'vue';
 import FreeWidgets from './src/Widgets';

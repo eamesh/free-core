@@ -1,13 +1,13 @@
-import { useFree } from 'free-core/core/src/hooks/free';
+import { useFree } from '../../core/src/hooks/free';
 import { defineComponent, ref } from 'vue';
-import { FreeActionTitle } from 'free-core/core';
+import { FreeActionTitle } from '../../core';
 import { NButton, NCard, NIcon, NPopconfirm, NSpace, NText, NTooltip } from 'naive-ui';
 import Draggable from 'vuedraggable';
-import { PageWidget } from 'free-core/core/src/interface';
+import { PageWidget } from '../../core/src/interface';
 import { Copy20Regular, DataUsage20Regular, Delete16Regular } from '@vicons/fluent';
 
 import './style.scss';
-import { usePage } from 'free-core/core/src/hooks/page';
+import { usePage } from '../../core/src/hooks/page';
 
 export default defineComponent({
   name: 'FreeWidgets',

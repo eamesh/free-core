@@ -1,4 +1,4 @@
-import { FreeActionTitle } from 'free-core/core';
+import { FreeActionTitle } from '../../core';
 import { ArrowFit20Regular, BorderOutside24Regular, DocumentText20Regular, Line24Regular, LineDashes20Regular, LineDashes24Filled, LineHorizontal120Regular } from '@vicons/fluent';
 import { NButton, NColorPicker, NForm, NFormItem, NIcon, NRadioButton, NRadioGroup, NSlider, NSpace, NText } from 'naive-ui';
 import { defineComponent, ref, unref } from 'vue';

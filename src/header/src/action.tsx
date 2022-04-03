@@ -1,4 +1,4 @@
-import { FreeActionTitle } from 'free-core/core';
+import { FreeActionTitle } from '../../core';
 import { NA } from 'naive-ui';
 
 export function useAction () {

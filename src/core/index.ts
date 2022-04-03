@@ -1,10 +1,10 @@
 import FreeLayout from './src/Layout';
 import _Free from './free';
 import FreeActionTitle from './src/components/ActionTitle';
-import { FreeHeaderWidget } from 'free-core/header';
-import { FreeFooterWidget } from 'free-core/footer';
-import { FreePageWidget } from 'free-core/page';
-import { FreeWidgetsManageWidget } from 'free-core/widgets';
+import { FreeHeaderWidget } from '../header';
+import { FreeFooterWidget } from '../footer';
+import { FreePageWidget } from '../page';
+import { FreeWidgetsManageWidget } from '../widgets';
 
 export const Free = new _Free();
 
