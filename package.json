@@ -17,6 +17,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "build:lib": "rimraf lib && pnpm build && pnpm build:dts && rimraf tsconfig.node.tsbuildinfo",
+    "build:example": "node ./scripts/build-example.js",
     "preview": "vite preview",
     "lint:eslint": "eslint \"src/**/*.{vue,js,ts,tsx}\" --fix",
     "lint:stylelint": "stylelint --fix \"**/*.{vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
