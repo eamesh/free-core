@@ -94,7 +94,7 @@ export default defineComponent({
                   size={0}
                 >
                   <i class='aside-image' style={{
-                    backgroundImage: 'url(https://img01.yzcdn.cn/public_files/2019/02/12/add4829af43def85a200029c3e485d77.png)'
+                    backgroundImage: `url(${element.thumb})`
                   }} />
                   <NText class='aside-name'>{element.name}</NText>
                   {/* <NText class='aside-count' depth="3">{element.allowCount}</NText> */}
