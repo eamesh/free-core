@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget } from '../lib/es';
+import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget } from '../src';
 
 Free.widgets = [
   FreeTitleTextWidget,
@@ -12,7 +12,7 @@ Free.widgets = [
 </template>
 
 <style>
-@import "../lib/style.css";
+/* @import "../lib/style.css"; */
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
