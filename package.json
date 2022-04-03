@@ -11,6 +11,7 @@
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
   "style": "./lib/style.css",
+  "types": "./lib/types/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/es/index.js",
