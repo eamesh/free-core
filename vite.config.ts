@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
-      'free-core': resolve(__dirname, './src')
+      'free-core': resolve(__dirname, 'src')
     }
   }
 });
