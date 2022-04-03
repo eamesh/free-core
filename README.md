@@ -12,6 +12,9 @@ pnpm add -D free-core naive-ui
 ```
 <font size="2" color="red">注意：1.1.0-dev以下版本不可用</font>
 
+## Example
+预览[Example](https://free.emesh.cloud)
+
 ## Documentation
 
 Widget类型

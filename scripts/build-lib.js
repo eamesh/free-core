@@ -18,7 +18,7 @@ const buildConfig = defineConfig({
         'naive-ui'
       ],
       output: {
-        sourcemap: true,
+        sourcemap: false,
         globals: {
           vue: 'Vue',
           'naive-ui': 'naive-ui'
