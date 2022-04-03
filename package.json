@@ -1,6 +1,6 @@
 {
-  "name": "free-layout",
-  "version": "0.0.1-dev",
+  "name": "free-core",
+  "version": "1.0.3-dev",
   "files": [
     "lib"
   ],
