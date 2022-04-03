@@ -1,0 +1,48 @@
+.free-widget-manage {
+  padding: 12px 16px;
+
+  .widget-item {
+    // border: 1px solid var(--n-border-color);
+    // border-radius: 3px;
+    // padding: 8px 12px;
+    margin-bottom: 14px;
+    cursor: move;
+
+    .n-text {
+      font-size: 12px;
+    }
+
+    .n-icon {
+      cursor: pointer;
+    }
+  }
+
+  .n-space {
+    & > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.widget-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  .n-text {
+    font-size: 12px;
+  }
+}
+
+.flip-list-move {
+  transition: transform .8s ease;
+}

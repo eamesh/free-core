@@ -7,16 +7,22 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
+    "declaration": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "paths": {
-      "free-core": [
-        "./src"
+      "free-layout/*": [
+        "./src/*"
       ]
     },
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
