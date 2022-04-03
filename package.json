@@ -1,19 +1,34 @@
 {
   "name": "free-layout",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1-dev",
+  "files": [
+    "lib"
+  ],
+  "main": "./lib/umd/index.js",
+  "module": "./lib/es/index.js",
+  "style" : "./lib/style.css",
+  "exports": {
+    ".": {
+      "import": "./lib/es/index.js",
+      "require": "./lib/umd/index.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build:lib": "rimraf lib && pnpm build && pnpm build:dts && rimraf tsconfig.node.tsbuildinfo",
     "preview": "vite preview",
     "lint:eslint": "eslint \"src/**/*.{vue,js,ts,tsx}\" --fix",
-    "lint:stylelint": "stylelint --fix \"**/*.{vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
+    "lint:stylelint": "stylelint --fix \"**/*.{vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "build:dts": "vue-tsc -b --force tsconfig.esm.json",
+    "clean": "rimraf lib"
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^1.3.9",
     "vue": "^3.2.25"
   },
   "devDependencies": {
+    "@types/estree": "^0.0.51",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "@vicons/fluent": "^0.12.0",
@@ -27,6 +42,7 @@
     "naive-ui": "^2.27.0",
     "postcss": "^8.4.12",
     "postcss-html": "^1.3.0",
+    "rimraf": "^3.0.2",
     "sass": "^1.49.11",
     "stylelint": "^14.6.1",
     "stylelint-config-recommended-vue": "^1.4.0",

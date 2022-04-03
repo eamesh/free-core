@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/estree': ^0.0.51
   '@typescript-eslint/eslint-plugin': ^5.17.0
   '@typescript-eslint/parser': ^5.17.0
   '@vicons/fluent': ^0.12.0
@@ -15,6 +16,7 @@ specifiers:
   naive-ui: ^2.27.0
   postcss: ^8.4.12
   postcss-html: ^1.3.0
+  rimraf: ^3.0.2
   sass: ^1.49.11
   stylelint: ^14.6.1
   stylelint-config-recommended-vue: ^1.4.0
@@ -34,6 +36,7 @@ dependencies:
   vue: 3.2.31
 
 devDependencies:
+  '@types/estree': 0.0.51
   '@typescript-eslint/eslint-plugin': 5.17.0_689ff565753ecf7c3328c07fad067df5
   '@typescript-eslint/parser': 5.17.0_eslint@8.12.0+typescript@4.6.3
   '@vicons/fluent': 0.12.0
@@ -47,6 +50,7 @@ devDependencies:
   naive-ui: 2.27.0_vue@3.2.31
   postcss: 8.4.12
   postcss-html: 1.3.0
+  rimraf: 3.0.2
   sass: 1.49.11
   stylelint: 14.6.1
   stylelint-config-recommended-vue: 1.4.0_50484b26a38601352aaf9ea7986ae8a8
@@ -479,6 +483,10 @@ packages:
       minimatch: 5.0.1
       mkdirp: 1.0.4
       path-browserify: 1.0.1
+    dev: true
+
+  /@types/estree/0.0.51:
+    resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
     dev: true
 
   /@types/jest/27.4.1:

@@ -7,6 +7,7 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
+    "outDir": "./lib/types",
     "declaration": true,
     "resolveJsonModule": true,
     "isolatedModules": false,
