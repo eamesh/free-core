@@ -1,6 +1,10 @@
 {
   "name": "free-core",
-  "version": "1.0.3-dev",
+  "version": "1.0.4-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eamesh/free.git"
+  },
   "files": [
     "lib"
   ],

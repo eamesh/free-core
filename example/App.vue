@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget, FreePageWidget, FreeFooterWidget, FreeHeaderWidget, FreeWidgetsManageWidget } from '../src';
+import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget } from '../src';
 
 Free.widgets = [
   FreeTitleTextWidget,
