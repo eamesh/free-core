@@ -7,7 +7,7 @@
 ## Installation
 
 ```
-pnpm add -D free-core
+pnpm add -D free-core naive-ui
 
 ```
 <font size="2" color="red">注意：1.1.0-dev以下版本不可用</font>
