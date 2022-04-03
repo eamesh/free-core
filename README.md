@@ -4,6 +4,14 @@
 主要功能核心业务分离，根据api开发widget 挂载到核心直接diy  
 核心功能完成，抽空完成Widget开发，然后适配跨端小程序
 
+## Installation
+
+```
+pnpm add -D free-core
+
+```
+<font size="2" color="red">注意：1.1.0-dev以下版本不可用</font>
+
 ## Documentation
 
 Widget类型
