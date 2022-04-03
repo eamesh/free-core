@@ -1,14 +1,36 @@
 <script setup lang="ts">
 import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget } from '../src';
+import { AsideGroup } from '../src/core/src/interface';
 
-Free.widgets = [
-  FreeTitleTextWidget,
-  FreeWhiteHeightWidget
+// Free.widgets = [
+//   FreeTitleTextWidget,
+//   FreeWhiteHeightWidget
+// ];
+
+const asideWidgets: AsideGroup[] = [
+  {
+    title: '基础组件',
+    key: 'base',
+    children: [
+      FreeTitleTextWidget,
+      FreeWhiteHeightWidget
+    ]
+  },
+  {
+    title: '营销组件',
+    key: 'func',
+    children: [
+      FreeTitleTextWidget,
+      FreeWhiteHeightWidget
+    ]
+  }
 ];
+
+Free.widgets = asideWidgets;
 </script>
 
 <template>
-  <FreeLayout :aside-group="false" />
+  <FreeLayout aside-group />
 </template>
 
 <style>
