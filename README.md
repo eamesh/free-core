@@ -132,7 +132,7 @@ const asides: AsideGroup[] = [
 - [x] Widget 模板、Action分离
 - [x] 核心组件、右侧固定组件
 - [ ] 其它功能组件
-- [ ] 适配taro nutui
+- [ ] 适配taro nutui [free-nutui](https://github.com/eamesh/free-nutui)
 
 ## Widget Feature
 - [x] 标题文本
