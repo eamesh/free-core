@@ -68,24 +68,49 @@ export interface FreeLayoutInjection {
 
 ### Widget挂载到Core
 ```
-import { Free } from '@/core'
+import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget, FreePageWidget, FreeFooterWidget, FreeHeaderWidget, FreeWidgetsManageWidget } from 'free-core'
 
 // Page header
-Free.header = freeHeader;
+Free.header = FreeHeaderWidget;
 
 // Page footer
-Free.footer = freeFooter;
+Free.footer = FreeFooterWidget;
 
+// 右侧功能列表
 Free.widgets = [
   // 功能性组件
+  FreeTitleTextWidget,
+  FreeWhiteHeightWidget
 ];
 
 // 右上固定位widget
 // free-header/free-footer 会直接挂载到右上固定位
 Free.core = [
-  freePage,
-  freeWidgets
+  FreePageWidget,
+  FreeWidgetsManageWidget
 ];
+
+// asideGroup 右侧组件列表分组结构
+import { AsideGroup } from 'free-core/lib/types/core/src/interface'
+const asides: AsideGroup[] = [
+  {
+    title: '基础组件',
+    key: 'base',
+    children: [
+      FreeTitleTextWidget,
+      FreeWhiteHeightWidget
+    ]
+  },
+  {
+    title: '营销组件',
+    key: 'func',
+    children: [
+      TitleText,
+      WhiteHeight
+    ]
+  }
+];
+<FreeLayout asideGroup />
 ```
 
 > 有空补文档
