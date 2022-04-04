@@ -13,7 +13,8 @@ pnpm add -D free-core naive-ui
 <font size="2" color="red">注意：1.1.0-dev以下版本不可用</font>
 
 ## Example
-预览[Example](https://free.emesh.cloud)
+基础功能预览[Preview](https://free.emesh.cloud)  
+基于[free-core](https://github.com/eamesh/free-core)的[Nutui](https://github.com/jdf2e/nutui)微页面编辑[Preview](https://nutui.emesh.cloud)
 
 ## Documentation
 
