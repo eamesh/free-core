@@ -128,6 +128,7 @@ export default defineComponent({
       // 重置
       currentFixedWidgetKey.value = undefined;
       currentPageIdRef.value = undefined;
+      renderAction.value = null;
     }
 
     return {
