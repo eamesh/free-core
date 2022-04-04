@@ -4,7 +4,7 @@ import { useLayout } from './hooks/layout';
 import Aside from './components/Aside';
 import Page from './components/Page';
 import Action from './components/Action';
-import { freeLayoutInjectionKey } from './interface';
+import { PageDataSchemas, freeLayoutInjectionKey, PageData } from './interface';
 import freeLight, { FreeTheme } from './light';
 import { ThemeProps, useConfig, useTheme } from 'naive-ui/lib/_mixins';
 
@@ -77,19 +77,28 @@ export default defineComponent({
       };
     });
 
-    function getPageData () {
-      console.log('get page data');
+    // 获取页面数据
+    function getPageData (): PageData {
       return {
-        pageWidgetsRef,
-        widgetsRefs
+        page: widgetsRefs.value,
+        core: fixedWidgetKeyDomRef.value
       };
     }
 
-    function setPageData () {
-      // 设置page widget
+    // 设置页面数据
+    function setPageData (data: PageDataSchemas) {
+      // 设置page widgets
       // 设置header widget
       // 设置footer widget
-      //
+      // 设置core widgets
+      data.page && (pageWidgetsRef.value = data.page);
+      data.header && (headerWidgetRef.value = data.header);
+      data.footer && (footerWidgetRef.value = data.footer);
+      data.core && (coreWidgetsRef.value = data.core);
+
+      // 重置
+      currentFixedWidgetKey.value = undefined;
+      currentPageIdRef.value = undefined;
     }
 
     provide(freeLayoutInjectionKey, {

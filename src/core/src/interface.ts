@@ -73,3 +73,15 @@ export interface FreeLayoutInjection {
 }
 
 export const freeLayoutInjectionKey = createInjectionKey<FreeLayoutInjection>('free-layout');
+
+export interface PageDataSchemas {
+  page?: PageWidget<any>[],
+  header?: CoreWidget<any>;
+  footer?: CoreWidget<any>;
+  core?: CoreWidget<any>[];
+}
+
+export interface PageData {
+  page: any;
+  core: any;
+}

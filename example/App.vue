@@ -34,11 +34,11 @@ const freeRef = ref();
 function handleSubmit () {
   console.log(freeRef.value.getPageData());
   const {
-    pageWidgetsRef,
-    widgetsRefs
+    page,
+    core
   } = freeRef.value.getPageData();
 
-  console.log(pageWidgetsRef.value, widgetsRefs.value);
+  console.log(page, core);
 }
 </script>
 

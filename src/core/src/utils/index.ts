@@ -35,5 +35,5 @@ export const fixedWidgetDataProps = <T>(defaultData: T) => (
 export const generatorPageWidgetId = (widgets: PageWidget<any>[]) => {
   if (widgets.length === 0) return 0;
   const sort = widgets.sort((prev, next) => next.id - prev.id);
-  return [...sort].shift()!.id++;
+  return [...sort].shift()!.id + 1;
 };
