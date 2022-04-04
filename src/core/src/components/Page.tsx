@@ -8,6 +8,7 @@ import { CoreWidget, PageWidget } from '../interface';
 import { useFree } from '../hooks/free';
 import { useLayout } from '../hooks/layout';
 import { useAction } from '../hooks/action';
+import { cloneDeep } from 'lodash-es';
 
 /**
  * Page的右上角固定部分，没想到什么好思路。widget action部分需要组件实例化之后拿到内部action
@@ -163,7 +164,7 @@ export default defineComponent({
             fixedCoreWidgetsCompute.filter((widget) => !['free-footer', 'free-header'].includes(widget.key)).map((widget: CoreWidget<any>) => {
               return <widget.component {...{
                 widgetKey: widget.key,
-                data: widget.data ?? {}
+                data: widget.data ? cloneDeep(widget.data) : {}
               }} ref={(e) => handleSetFixedWidgetKeyDomRef(e, widget.key)} />;
             })
           }
@@ -181,7 +182,12 @@ export default defineComponent({
             >
               {this.headerWidgetRef && this.headerWidgetRef.render
                 ? (
-                    <this.headerWidgetRef.component ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-header')} />
+                    <this.headerWidgetRef.component {...{
+                      widgetKey: this.headerWidgetRef.key,
+                      data: this.headerWidgetRef.data
+                        ? cloneDeep(this.headerWidgetRef.data)
+                        : {}
+                    }} ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-header')} />
                   )
                 : null}
               <Draggable
@@ -199,7 +205,7 @@ export default defineComponent({
                         <element.component {...{
                           id: element.id,
                           widgetKey: element.key,
-                          data: element.data ?? {}
+                          data: element.data ? cloneDeep(element.data) : {}
                         }} ref={(e) => handleSetRefs(e, element.id as number)} />
                       </DragableItem>
                     )
@@ -210,7 +216,12 @@ export default defineComponent({
             <div class='preview-footer'>
               {this.footerWidgetRef && this.footerWidgetRef.render
                 ? (
-                    <this.footerWidgetRef.component ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-footer')} />
+                    <this.footerWidgetRef.component {...{
+                      widgetKey: this.headerWidgetRef.key,
+                      data: this.footerWidgetRef.data
+                        ? cloneDeep(this.footerWidgetRef.data)
+                        : {}
+                    }} ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-footer')} />
                   )
                 : null}
             </div>
