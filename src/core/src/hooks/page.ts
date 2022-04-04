@@ -1,5 +1,6 @@
 import { computed } from 'vue';
 import { Widget } from '../interface';
+import { generatorPageWidgetId } from '../utils';
 import { useFree } from './free';
 
 export function usePage () {
@@ -23,8 +24,9 @@ export function usePage () {
   }
 
   // 添加Page widget
-  function handleAddPageWidget (widget: Widget) {
-    const id = pageWidgetsRef.value.length;
+  function handleAddPageWidget (widget: Widget<any>) {
+    // const id = pageWidgetsRef.value.length;
+    const id = generatorPageWidgetId(pageWidgetsRef.value);
     pageWidgetsRef.value.push({
       ...widget,
       id

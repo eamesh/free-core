@@ -4,6 +4,7 @@ import { AsideGroup, Widget } from '../interface';
 import Draggable from 'vuedraggable';
 import { useAside } from '../hooks/aside';
 import { usePage } from '../hooks/page';
+import { generatorPageWidgetId } from '../utils';
 
 const asideProps = {
   asideGroup: {
@@ -45,7 +46,7 @@ export default defineComponent({
 
       return {
         ...currentWidget,
-        id: pageWidgetsRef.value.length
+        id: generatorPageWidgetId(pageWidgetsRef.value)
       };
     }
 
@@ -70,7 +71,7 @@ export default defineComponent({
     } = this;
 
     // 渲染Aside
-    function renderDragAside (asides: Widget[]) {
+    function renderDragAside (asides: Widget<any>[]) {
       return (
         <Draggable
           list={asides}
@@ -147,7 +148,7 @@ export default defineComponent({
             }
           </NCollapse>
         : (
-            renderDragAside(asidesCompute as Widget[])
+            renderDragAside(asidesCompute as Widget<any>[])
           // <NGrid yGap={12} cols={2}>
           //   {
           //     (asideWidgets as Widget[]).map(child => {

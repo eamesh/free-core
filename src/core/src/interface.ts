@@ -17,19 +17,19 @@ export interface Widget<T> extends WidgetSchema<T> {
 }
 
 // 固定组件
-export interface CoreWidgetShow extends WidgetSchema {
+export interface CoreWidgetShow<T> extends WidgetSchema<T> {
   icon: WidgetNode;
   show: true;
   render: boolean; // Page是否渲染组件
 }
 
-export interface CoreWidgetRender extends WidgetSchema {
+export interface CoreWidgetRender<T> extends WidgetSchema<T> {
   icon?: WidgetNode;
   show: false;
   render: boolean; // Page是否渲染组件
 }
 
-export type CoreWidget = CoreWidgetRender | CoreWidgetShow
+export type CoreWidget<T> = CoreWidgetRender<T> | CoreWidgetShow<T>
 
 export interface FixedWidget extends WidgetSchema {
   icon: WidgetNode;
@@ -57,10 +57,10 @@ export interface FreeLayoutInjection {
   widgetsRefs: Ref<WidgetRefs>;
   asideGroupRef: Ref<boolean>;
 
-  headerWidgetRef: Ref<CoreWidget>;
-  footerWidgetRef: Ref<CoreWidget>;
+  headerWidgetRef: Ref<CoreWidget<any>>;
+  footerWidgetRef: Ref<CoreWidget<any>>;
   fixedWidgetsRef: Ref<FixedWidget[]>;
-  coreWidgetsRef: Ref<CoreWidget[]>;
+  coreWidgetsRef: Ref<CoreWidget<any>[]>;
 
   headerRef: Ref;
   footerRef: Ref;

@@ -8,7 +8,7 @@ import { useAside } from '../hooks/aside';
 
 const dragableItemProps = {
   info: {
-    type: Object as PropType<PageWidget>,
+    type: Object as PropType<PageWidget<any>>,
     required: true
   }
 };

@@ -69,7 +69,7 @@ export default defineComponent({
       fixedWidgetKeyDomRef.value[key] = fixedRef;
     }
 
-    function handleClickFixedCoreWidget (e: MouseEvent, widget: CoreWidget) {
+    function handleClickFixedCoreWidget (e: MouseEvent, widget: CoreWidget<any>) {
       e.preventDefault();
       handleSetCurrentFixedWidgetKey(widget.key);
 
@@ -156,8 +156,11 @@ export default defineComponent({
           display: 'none'
         }}>
           {
-            fixedCoreWidgetsCompute.map(widget => {
-              return <widget.component ref={(e) => handleSetFixedWidgetKeyDomRef(e, widget.key)} />;
+            fixedCoreWidgetsCompute.map((widget: CoreWidget<any>) => {
+              return <widget.component {...{
+                widgetKey: widget.key,
+                data: widget.data ?? {}
+              }} ref={(e) => handleSetFixedWidgetKeyDomRef(e, widget.key)} />;
             })
           }
         </div>
@@ -187,9 +190,13 @@ export default defineComponent({
                 }}>
 
                   {{
-                    item: ({ element }: { element: PageWidget }) => (
+                    item: ({ element }: { element: PageWidget<any> }) => (
                       <DragableItem info={element}>
-                        <element.component ref={(e) => handleSetRefs(e, element.id as number)} />
+                        <element.component {...{
+                          id: element.id,
+                          widgetKey: element.key,
+                          data: element.data ?? {}
+                        }} ref={(e) => handleSetRefs(e, element.id as number)} />
                       </DragableItem>
                     )
                   }}

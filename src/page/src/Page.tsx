@@ -2,9 +2,10 @@ import { useFree } from '../../core/src/hooks/free';
 import { NButton, NColorPicker, NDivider, NForm, NFormItem, NInput, NRadio, NRadioGroup, NSpace, NText } from 'naive-ui';
 import { defineComponent, ref, unref, watch } from 'vue';
 import { FreeActionTitle } from '../../core';
-import { widgetDataProps } from 'free-core/core/src/utils';
+import { fixedWidgetDataProps } from 'free-core/core/src/utils';
 
-const DEFAULT_COLOR = '#f7f8fa';
+export const DEFAULT_COLOR = '#f7f8fa';
+
 export interface FreePageProps {
   title: string;
   description: string;
@@ -14,7 +15,7 @@ export interface FreePageProps {
 export default defineComponent({
   name: 'FreePage',
 
-  props: widgetDataProps<FreePageProps>({
+  props: fixedWidgetDataProps<FreePageProps>({
     title: '微页面标题',
     description: '',
     backgroundColor: DEFAULT_COLOR

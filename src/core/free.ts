@@ -1,21 +1,21 @@
 import { AsideGroup, CoreWidget, FixedWidget, Widget } from './src/interface';
 
 class Free {
-  private _widgets: Widget[] | AsideGroup[] = [];
-  private _header: CoreWidget | undefined = undefined;
-  private _footer: CoreWidget | undefined = undefined;
+  private _widgets: Widget<any>[] | AsideGroup[] = [];
+  private _header: CoreWidget<any> | undefined = undefined;
+  private _footer: CoreWidget<any> | undefined = undefined;
   private _fixed: FixedWidget[] = [];
-  private _core: CoreWidget[] = [];
+  private _core: CoreWidget<any>[] = [];
 
   get widgets () {
     return this._widgets;
   }
 
-  set widgets (widgets: Widget[] | AsideGroup[]) {
+  set widgets (widgets: Widget<any>[] | AsideGroup[]) {
     this._widgets = widgets;
   }
 
-  set header (widget: CoreWidget | undefined) {
+  set header (widget: CoreWidget<any> | undefined) {
     this._header = widget;
   }
 
@@ -23,7 +23,7 @@ class Free {
     return this._header;
   }
 
-  set footer (widget: CoreWidget | undefined) {
+  set footer (widget: CoreWidget<any> | undefined) {
     this._footer = widget;
   }
 
@@ -39,7 +39,7 @@ class Free {
     return this._fixed;
   }
 
-  set core (widgets: CoreWidget[]) {
+  set core (widgets: CoreWidget<any>[]) {
     this._core = widgets;
   }
 
@@ -47,7 +47,7 @@ class Free {
     return this._core;
   }
 
-  register (widgets: Widget[] | AsideGroup[]) {
+  register (widgets: Widget<any>[] | AsideGroup[]) {
     this._widgets = widgets;
   }
 }
