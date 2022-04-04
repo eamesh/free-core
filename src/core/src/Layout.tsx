@@ -129,6 +129,7 @@ export default defineComponent({
       currentFixedWidgetKey.value = undefined;
       currentPageIdRef.value = undefined;
       renderAction.value = null;
+      fixedWidgetKeyDomRef.value = {};
     }
 
     return {

@@ -6,11 +6,14 @@ import Draggable from 'vuedraggable';
 import { PageWidget } from '../../core/src/interface';
 import { Copy20Regular, DataUsage20Regular, Delete16Regular } from '@vicons/fluent';
 import { usePage } from '../../core/src/hooks/page';
+import { fixedWidgetDataProps } from 'free-core/core/src/utils';
 
 import './style.scss';
 
 export default defineComponent({
   name: 'FreeWidgets',
+
+  props: fixedWidgetDataProps({}),
 
   setup () {
     const {

@@ -1,13 +1,20 @@
+import { fixedWidgetDataProps } from 'free-core/core/src/utils';
 import { NText } from 'naive-ui';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 import './style.scss';
 
 export default defineComponent({
   name: 'FreeFooter',
 
-  setup () {
+  props: fixedWidgetDataProps({}),
 
+  setup () {
+    const model = ref({});
+
+    return {
+      model
+    };
   },
 
   render () {

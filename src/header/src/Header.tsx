@@ -9,9 +9,18 @@ import Signal from '../assets/signal.png';
 import './style.scss';
 import { useAction } from './action';
 import { usePage } from '../../core/src/hooks/page';
+import { fixedWidgetDataProps } from 'free-core/core/src/utils';
+
+export interface FreeHeaderProps {
+  backgroundColor: string;
+}
 
 export default defineComponent({
   name: 'FreeHeader',
+
+  props: fixedWidgetDataProps<FreeHeaderProps>({
+    backgroundColor: '#fff'
+  }),
 
   setup () {
     const {
