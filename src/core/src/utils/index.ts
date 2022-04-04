@@ -34,6 +34,6 @@ export const fixedWidgetDataProps = <T>(defaultData: T) => (
 // 根据page wiget树生成id
 export const generatorPageWidgetId = (widgets: PageWidget<any>[]) => {
   if (widgets.length === 0) return 0;
-  const sort = widgets.sort((prev, next) => next.id - prev.id);
-  return [...sort].shift()!.id + 1;
+  const sort = [...widgets].sort((prev, next) => next.id - prev.id);
+  return sort.shift()!.id + 1;
 };
