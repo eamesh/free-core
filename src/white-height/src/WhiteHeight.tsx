@@ -1,26 +1,60 @@
 import { FreeActionTitle } from '../../core';
 import { ArrowFit20Regular, BorderOutside24Regular, DocumentText20Regular, Line24Regular, LineDashes20Regular, LineDashes24Filled, LineHorizontal120Regular } from '@vicons/fluent';
 import { NButton, NColorPicker, NForm, NFormItem, NIcon, NRadioButton, NRadioGroup, NSlider, NSpace, NText } from 'naive-ui';
-import { defineComponent, ref, unref } from 'vue';
+import { computed, defineComponent, ref, unref } from 'vue';
+import { widgetDataProps } from 'free-core/core/src/utils';
 
 import './style.scss';
 
-export default defineComponent({
-  name: 'TitleText',
+export type WhiteHeightType = 'empty' | 'line';
+export type WhiteHeightLineStyle = 'solid' | 'dashed' | 'dotted';
+export interface WhiteHeightProps {
+  type: WhiteHeightType,
+  empty: {
+    height: number
+  },
+  line: {
+    style: WhiteHeightLineStyle
+    padding: string
+    color: string
+  }
+}
 
-  setup () {
-    const model = ref({
-      type: 'empty',
-      empty: {
-        height: 30
-      },
-      line: {
-        style: 'solid',
-        padding: '0',
-        color: '#e5e5e5'
-      }
-    });
+export default defineComponent({
+  name: 'WhiteHeight',
+
+  props: widgetDataProps<WhiteHeightProps>({
+    type: 'empty',
+    empty: {
+      height: 30
+    },
+    line: {
+      style: 'solid',
+      padding: '0',
+      color: '#e5e5e5'
+    }
+  }),
+
+  setup (props) {
+    const model = ref<WhiteHeightProps>(props.data);
     const modelUnref = unref(model);
+
+    const lineStyleText = computed(() => {
+      let text = '';
+      switch (model.value.line.style) {
+        case 'solid':
+          text = '实现';
+          break;
+        case 'dashed':
+          text = '虚线';
+          break;
+        case 'dotted':
+          text = '点线';
+          break;
+      }
+
+      return text;
+    });
 
     function renderAction () {
       return (
@@ -64,7 +98,7 @@ export default defineComponent({
                       <>
                         <NFormItem label='选择样式'>
                           <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
-                            <NText>{ modelUnref.type === 'empty' ? '辅助空白' : '辅助线' }</NText>
+                            <NText>{ lineStyleText.value}</NText>
                             <NRadioGroup v-model:value={modelUnref.line.style}>
                               <NRadioButton value='solid' key='solid'>
                                 <NIcon size={20} style={{

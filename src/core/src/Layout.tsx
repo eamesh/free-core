@@ -79,6 +79,10 @@ export default defineComponent({
 
     function getPageData () {
       console.log('get page data');
+      return {
+        pageWidgetsRef,
+        widgetsRefs
+      };
     }
 
     provide(freeLayoutInjectionKey, {

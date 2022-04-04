@@ -3,14 +3,15 @@ import { Component, CSSProperties, defineComponent, Ref, VNode } from 'vue';
 
 export type WidgetNode = ReturnType<typeof defineComponent> | VNode | Component;
 
-export interface WidgetSchema {
+export interface WidgetSchema<T = Object> {
   name: string;
   key: string;
   component: WidgetNode;
+  data?: T;
 }
 
 // 组件
-export interface Widget extends WidgetSchema {
+export interface Widget<T> extends WidgetSchema<T> {
   allowCount: number;
   thumb: string;
 }
@@ -34,7 +35,7 @@ export interface FixedWidget extends WidgetSchema {
   icon: WidgetNode;
 }
 
-export interface PageWidget extends Widget {
+export interface PageWidget<T> extends Widget<T> {
   id: number;
 }
 
@@ -45,13 +46,13 @@ export interface WidgetRefs {
 export interface AsideGroup {
   title: string;
   key: string;
-  children: Widget[];
+  children: Widget<any>[];
 }
 
 export interface FreeLayoutInjection {
   asideDragStartRef: Ref<boolean>;
-  asideWidgetsRef: Ref<Widget[] | AsideGroup[]>;
-  pageWidgetsRef: Ref<PageWidget[]>;
+  asideWidgetsRef: Ref<Widget<any>[] | AsideGroup[]>;
+  pageWidgetsRef: Ref<PageWidget<any>[]>;
   currentPageIdRef: Ref<number | undefined>;
   widgetsRefs: Ref<WidgetRefs>;
   asideGroupRef: Ref<boolean>;

@@ -5,9 +5,9 @@ import { NButton, NCard, NIcon, NPopconfirm, NSpace, NText, NTooltip } from 'nai
 import Draggable from 'vuedraggable';
 import { PageWidget } from '../../core/src/interface';
 import { Copy20Regular, DataUsage20Regular, Delete16Regular } from '@vicons/fluent';
+import { usePage } from '../../core/src/hooks/page';
 
 import './style.scss';
-import { usePage } from '../../core/src/hooks/page';
 
 export default defineComponent({
   name: 'FreeWidgets',
@@ -71,7 +71,7 @@ export default defineComponent({
                       }}
                     >
                       {{
-                        item: ({ element }: { element: PageWidget }) => {
+                        item: ({ element }: { element: PageWidget<any> }) => {
                           return (
                             <NCard
                               size='small'

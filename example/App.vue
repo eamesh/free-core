@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { NButton } from 'naive-ui';
 import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget } from '../src';
 import { AsideGroup } from '../src/core/src/interface';
 
@@ -27,10 +29,31 @@ const asideWidgets: AsideGroup[] = [
 ];
 
 Free.widgets = asideWidgets;
+
+const freeRef = ref();
+function handleSubmit () {
+  console.log(freeRef.value.getPageData());
+  const {
+    pageWidgetsRef,
+    widgetsRefs
+  } = freeRef.value.getPageData();
+
+  console.log(pageWidgetsRef.value, widgetsRefs.value);
+}
 </script>
 
 <template>
-  <FreeLayout aside-group />
+  <NButton
+    type="primary"
+    style="position: absolute; z-index: 1000; top: 0; right: 500px;"
+    @click="handleSubmit"
+  >
+    发布
+  </NButton>
+  <FreeLayout
+    ref="freeRef"
+    aside-group
+  />
 </template>
 
 <style>

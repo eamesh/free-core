@@ -2,37 +2,66 @@ import { FreeActionTitle } from '../../core';
 import { TextAlignCenter20Regular, TextAlignLeft20Regular, TextFont16Filled, TextFont20Regular } from '@vicons/fluent';
 import { FormRules, NButton, NCheckbox, NColorPicker, NDivider, NForm, NFormItem, NIcon, NInput, NRadioButton, NRadioGroup, NSpace, NText } from 'naive-ui';
 import { computed, CSSProperties, defineComponent, ref, unref } from 'vue';
+import { widgetDataProps } from 'free-core/core/src/utils';
 
 import './style.scss';
+
+export type TitleTextTitleAligin = 'left' | 'center';
+export type TitleTextWeight = 'bold' | '400';
+export type TitleTextFontSize = '16px' | '14px' | '12px';
+export interface TitleTextProps {
+  bottomDivider: boolean,
+  style: {
+    backgroundColor: string
+  },
+  title: {
+    text: string,
+    aligin: TitleTextTitleAligin,
+    style: {
+      fontSize: TitleTextFontSize,
+      fontWeight: TitleTextWeight,
+      color: string
+    }
+  },
+  description: {
+    text: string,
+    style: {
+      fontSize: TitleTextFontSize,
+      fontWeight: TitleTextWeight,
+      color: string
+    }
+  }
+}
 
 export default defineComponent({
   name: 'TitleText',
 
-  setup () {
-    const value = ref('');
-    const model = ref({
-      bottomDivider: false,
+  props: widgetDataProps<TitleTextProps>({
+    bottomDivider: false,
+    style: {
+      backgroundColor: '#fff'
+    },
+    title: {
+      text: '',
+      aligin: 'left',
       style: {
-        backgroundColor: '#fff'
-      },
-      title: {
-        text: '',
-        aligin: 'left',
-        style: {
-          fontSize: '16px',
-          fontWeight: 'bold',
-          color: '#323233'
-        }
-      },
-      description: {
-        text: '',
-        style: {
-          fontSize: '12px',
-          fontWeight: '400',
-          color: '#969799'
-        }
+        fontSize: '16px',
+        fontWeight: 'bold',
+        color: '#323233'
       }
-    });
+    },
+    description: {
+      text: '',
+      style: {
+        fontSize: '12px',
+        fontWeight: '400',
+        color: '#969799'
+      }
+    }
+  }),
+
+  setup (props) {
+    const model = ref(props.data);
 
     const rules: FormRules = {
       title: {
@@ -292,7 +321,6 @@ export default defineComponent({
 
     return {
       renderAction,
-      value,
       model
     };
   },
