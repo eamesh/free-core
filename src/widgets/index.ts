@@ -3,7 +3,7 @@ import { PanelSeparateWindow20Regular } from '@vicons/fluent';
 import { markRaw } from 'vue';
 import FreeWidgets from './src/Widgets';
 
-export const FreeWidgetsManageWidget: CoreWidget = {
+export const FreeWidgetsManageWidget: CoreWidget<any> = {
   name: '组件管理',
   key: 'free-widgets',
   component: markRaw(FreeWidgets),
