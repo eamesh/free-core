@@ -121,7 +121,65 @@ const asides: AsideGroup[] = [
     ]
   }
 ];
-<FreeLayout asideGroup />
+
+
+const freeLayoutRef = ref();
+
+// 获取Page数据
+freeLayoutRef.value.getPageData();
+// 设置Page数据
+function handleSetDefaultPageData () {
+  const data: PageDataSchemas = {
+    page: [
+      {
+        id: 1,
+        ...NutuiSearchWidget,
+        data: {}
+      },
+      {
+        id: 2,
+        ...NutuiNavigationWidget,
+        data: {}
+      },
+      {
+        id: 3,
+        ...NutuiNoticeBarhWidget,
+        data: {}
+      },
+      {
+        id: 8,
+        ...FreeWhiteHeightWidget,
+        data: {
+          type: 'empty',
+          empty: {
+            height: 8
+          },
+          line: {
+            style: 'solid',
+            padding: '0',
+            color: '#e5e5e5'
+          }
+        }
+      },
+      ...
+    ],
+    core: [
+      {
+        ...FreePageWidget,
+        data: {
+          title: '默认页面',
+          description: '',
+          backgroundColor: '#f7f8fa'
+        }
+      }
+    ]
+  };
+
+  console.log(freeLayoutRef.value);
+  freeLayoutRef.value.setPageData(data);
+}
+// 布局
+<FreeLayout asideGroup ref="freeLayoutRef" />
 ```
 
 > 有空补文档
