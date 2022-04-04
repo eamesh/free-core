@@ -103,8 +103,12 @@ export default defineComponent({
       return (
         <>
           <FreeActionTitle title='标题文本' />
-          <div class='free-action-form title-text-form'>
-            <NForm rules={rules} size='small' model={modelUnref}>
+          <div class='title-text-form'>
+            <NForm
+              rules={rules}
+              model={modelUnref}
+              class='free-action-form'
+            >
               <NFormItem label='标题内容' path='title.text'>
                 <NInput v-model:value={modelUnref.title.text} placeholder={'请输入标题'} />
               </NFormItem>
@@ -118,7 +122,7 @@ export default defineComponent({
                 <NFormItem label='显示位置' labelAlign='left' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{ modelUnref.title.aligin === 'left' ? '居左显示' : '居中显示' }</NText>
-                    <NRadioGroup v-model:value={modelUnref.title.aligin}>
+                    <NRadioGroup size='small' v-model:value={modelUnref.title.aligin}>
                       <NRadioButton value='left' key='left'>
                         <NIcon size={20} style={{
                           marginTop: '4px'
@@ -139,7 +143,7 @@ export default defineComponent({
                 <NFormItem label='标题大小' labelAlign='left' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{showTitleFontSizeText.value}</NText>
-                    <NRadioGroup v-model:value={modelUnref.title.style.fontSize}>
+                    <NRadioGroup size='small' v-model:value={modelUnref.title.style.fontSize}>
                       <NRadioButton value='16px' key='big'>
                         <NIcon size={16} style={{
                           marginTop: '6px'
@@ -167,7 +171,7 @@ export default defineComponent({
                 <NFormItem label='描述大小' labelAlign='left' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{showDescriptionFontSizeText.value}</NText>
-                    <NRadioGroup v-model:value={modelUnref.description.style.fontSize}>
+                    <NRadioGroup size='small' v-model:value={modelUnref.description.style.fontSize}>
                       <NRadioButton value='16px' key='big'>
                         <NIcon size={16} style={{
                           marginTop: '6px'
@@ -195,7 +199,7 @@ export default defineComponent({
                 <NFormItem label='标题粗细' labelAlign='left' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{showTitleFontWeightText.value}</NText>
-                    <NRadioGroup v-model:value={modelUnref.title.style.fontWeight}>
+                    <NRadioGroup size='small' v-model:value={modelUnref.title.style.fontWeight}>
                       <NRadioButton value='400' key='light'>
                         <NIcon size={16} style={{
                           marginTop: '4px'
@@ -213,10 +217,10 @@ export default defineComponent({
                     </NRadioGroup>
                   </NSpace>
                 </NFormItem>
-                <NFormItem label='描述粗细' labelAlign='left' labelPlacement='left'>
+                <NFormItem label='描述粗细' labelAlign='center' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{showDescriptionFontWeightText.value}</NText>
-                    <NRadioGroup v-model:value={modelUnref.description.style.fontWeight}>
+                    <NRadioGroup size='small' v-model:value={modelUnref.description.style.fontWeight}>
                       <NRadioButton value='400' key='light'>
                         <NIcon size={16} style={{
                           marginTop: '4px'
@@ -234,7 +238,7 @@ export default defineComponent({
                     </NRadioGroup>
                   </NSpace>
                 </NFormItem>
-                <NFormItem label='标题颜色' labelAlign='left' labelPlacement='left'>
+                <NFormItem label='标题颜色' labelAlign='center' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{modelUnref.title.style.color}</NText>
                     <NSpace>
@@ -247,7 +251,7 @@ export default defineComponent({
                     </NSpace>
                   </NSpace>
                 </NFormItem>
-                <NFormItem label='描述颜色' labelAlign='left' labelPlacement='left'>
+                <NFormItem label='描述颜色' labelAlign='center' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{modelUnref.description.style.color}</NText>
                     <NSpace>
@@ -260,7 +264,7 @@ export default defineComponent({
                     </NSpace>
                   </NSpace>
                 </NFormItem>
-                <NFormItem label='背景颜色' labelAlign='left' labelPlacement='left'>
+                <NFormItem label='背景颜色' labelAlign='center' labelPlacement='left'>
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{modelUnref.style.backgroundColor}</NText>
                     <NSpace>
