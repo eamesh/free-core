@@ -127,7 +127,26 @@ const asides: AsideGroup[] = [
 const freeLayoutRef = ref();
 
 // 获取Page数据
-freeLayoutRef.value.getPageData();
+// freeLayoutRef.value.getPageData();
+function handleGetPageData () {
+  console.info('%c=====> getPageData:', 'color: #43bb88;font-size: 12px;font-weight: bold;text-decoration: underline;', freeLayoutRef.value.getPageData());
+  const datas = freeLayoutRef.value.getPageData() as any;
+  const page = Object.values(datas.page).map((item: any) => {
+    return {
+      key: item.widgetKey,
+      data: item.model
+    };
+  });
+  const pageData: any = {
+    page
+  };
+  Object.values(datas.core).forEach((item: any) => {
+    pageData[item.widgetKey] = item.model || {};
+  });
+
+  console.log(JSON.stringify(pageData));
+}
+
 // 设置Page数据
 function handleSetDefaultPageData () {
   const data: PageDataSchemas = {
