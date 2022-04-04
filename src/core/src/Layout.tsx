@@ -1,4 +1,4 @@
-import { computed, CSSProperties, defineComponent, onMounted, provide, ref } from 'vue';
+import { computed, CSSProperties, defineComponent, nextTick, onMounted, provide, ref } from 'vue';
 import { cB, NLayout, NLayoutSider } from 'naive-ui';
 import { useLayout } from './hooks/layout';
 import Aside from './components/Aside';
@@ -43,7 +43,8 @@ export default defineComponent({
       renderAction,
       currentFixedWidgetKey,
       fixedWidgetKeyDomRef,
-      pageStyleRef
+      pageStyleRef,
+      fixedCoreWidgetsCompute
     } = useLayout();
 
     onMounted(() => {
@@ -85,22 +86,6 @@ export default defineComponent({
       };
     }
 
-    // 设置页面数据
-    function setPageData (data: PageDataSchemas) {
-      // 设置page widgets
-      // 设置header widget
-      // 设置footer widget
-      // 设置core widgets
-      data.page && (pageWidgetsRef.value = data.page);
-      data.header && (headerWidgetRef.value = data.header);
-      data.footer && (footerWidgetRef.value = data.footer);
-      data.core && (coreWidgetsRef.value = data.core);
-
-      // 重置
-      currentFixedWidgetKey.value = undefined;
-      currentPageIdRef.value = undefined;
-    }
-
     provide(freeLayoutInjectionKey, {
       asideDragStartRef,
       asideWidgetsRef,
@@ -117,8 +102,33 @@ export default defineComponent({
       renderAction,
       currentFixedWidgetKey,
       fixedWidgetKeyDomRef,
-      pageStyleRef
+      pageStyleRef,
+      fixedCoreWidgetsCompute
     });
+
+    // 设置页面数据
+    function setPageData (data: PageDataSchemas) {
+      // 设置page widgets
+      // 设置header widget
+      // 设置footer widget
+      // 设置core widgets
+      data.page && (pageWidgetsRef.value = []);
+      data.header && (headerWidgetRef.value = undefined);
+      data.footer && (footerWidgetRef.value = undefined);
+      data.core && (coreWidgetsRef.value = []);
+
+      nextTick(() => {
+        data.page && (pageWidgetsRef.value = data.page);
+        data.header && (headerWidgetRef.value = data.header);
+        data.footer && (footerWidgetRef.value = data.footer);
+        data.core && (coreWidgetsRef.value = data.core);
+      });
+
+      console.log(coreWidgetsRef.value);
+      // 重置
+      currentFixedWidgetKey.value = undefined;
+      currentPageIdRef.value = undefined;
+    }
 
     return {
       asideWidgets: asideWidgetsRef,

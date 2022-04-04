@@ -6,7 +6,7 @@ import { useAside } from '../hooks/aside';
 import { usePage } from '../hooks/page';
 import { CoreWidget, PageWidget } from '../interface';
 import { useFree } from '../hooks/free';
-import { useLayout } from '../hooks/layout';
+// import { useLayout } from '../hooks/layout';
 import { useAction } from '../hooks/action';
 import { cloneDeep } from 'lodash-es';
 
@@ -37,12 +37,13 @@ export default defineComponent({
       // footerRef,
       fixedWidgetKeyDomRef,
       currentFixedWidgetKey,
-      pageStyleRef
+      pageStyleRef,
+      fixedCoreWidgetsCompute
     } = useFree();
 
-    const {
-      fixedCoreWidgetsCompute
-    } = useLayout();
+    // const {
+    //   fixedCoreWidgetsCompute
+    // } = useLayout();
 
     const {
       asideDragStartRef
@@ -123,7 +124,6 @@ export default defineComponent({
       asideDragStart,
       handleDragChange,
       handleSetRefs,
-      fixedCoreWidgetsCompute,
       handleClickFixedCoreWidget,
       handleSetFixedWidgetKeyDomRef
     } = this;
@@ -133,7 +133,7 @@ export default defineComponent({
         <div class='preview-page'>
           <NSpace vertical>
             {
-              fixedCoreWidgetsCompute.map((widget) => {
+              this.fixedCoreWidgetsCompute.map((widget) => {
                 return (
                   <div
                     class={[
@@ -154,6 +154,7 @@ export default defineComponent({
             }
           </NSpace>
         </div>
+
         <div style={{
           display: 'none'
         }}>
@@ -161,7 +162,7 @@ export default defineComponent({
             // 初始化dom
             // 过滤掉free-footer free-header
             // free-footer free-header 单独初始化
-            fixedCoreWidgetsCompute.filter((widget) => !['free-footer', 'free-header'].includes(widget.key)).map((widget: CoreWidget<any>) => {
+            this.fixedCoreWidgetsCompute.filter((widget) => !['free-footer', 'free-header'].includes(widget.key)).map((widget: CoreWidget<any>) => {
               return <widget.component {...{
                 widgetKey: widget.key,
                 data: widget.data ? cloneDeep(widget.data) : {}

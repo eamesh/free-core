@@ -39,7 +39,7 @@ export default defineComponent({
 
     const pageTitle = computed(() => {
       console.log(fixedWidgetKeyDomRef.value['free-page']);
-      return fixedWidgetKeyDomRef.value['free-page'].model.title || '';
+      return fixedWidgetKeyDomRef.value['free-page'] ? fixedWidgetKeyDomRef.value['free-page'].model.title : '';
     });
 
     return {

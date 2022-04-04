@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import { ref } from 'vue';
 // import { NButton } from 'naive-ui';
+import { ref } from 'vue';
 import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget } from '../src';
 import { AsideGroup } from '../src/core/src/interface';
 
@@ -30,7 +31,7 @@ const asideWidgets: AsideGroup[] = [
 
 Free.widgets = asideWidgets;
 
-// const freeRef = ref();
+const freeRef = ref();
 // function handleSubmit () {
 //   console.log(freeRef.value.getPageData());
 //   const {
@@ -40,13 +41,32 @@ Free.widgets = asideWidgets;
 
 //   console.log(page, core);
 // }
+
+// function handleClick () {
+//   freeRef.value.setPageData({
+//     core: [
+//       {
+//         ...FreePageWidget,
+//         data: {
+//           title: '默认页面',
+//           description: '',
+//           backgroundColor: '#f7f8fa'
+//         }
+//       }
+//     ]
+//   });
+
+// setTimeout(() => {
+//   console.log(freeRef.value.getPageData(), 'asd');
+// });
+// }
 </script>
 
 <template>
   <!-- <NButton
     type="primary"
     style="position: absolute; z-index: 1000; top: 0; right: 500px;"
-    @click="handleSubmit"
+    @click="handleClick"
   >
     发布
   </NButton> -->

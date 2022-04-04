@@ -1,5 +1,5 @@
 import { createInjectionKey } from 'naive-ui/lib/_utils';
-import { Component, CSSProperties, defineComponent, Ref, VNode } from 'vue';
+import { Component, ComputedRef, CSSProperties, defineComponent, Ref, VNode } from 'vue';
 
 export type WidgetNode = ReturnType<typeof defineComponent> | VNode | Component;
 
@@ -70,6 +70,8 @@ export interface FreeLayoutInjection {
   fixedWidgetKeyDomRef: Ref<any>;
 
   pageStyleRef: Ref<CSSProperties>;
+
+  fixedCoreWidgetsCompute: ComputedRef<CoreWidget<any>[]>;
 }
 
 export const freeLayoutInjectionKey = createInjectionKey<FreeLayoutInjection>('free-layout');

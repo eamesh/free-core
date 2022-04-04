@@ -14,7 +14,7 @@ export const useLayout = () => {
   // 固定组件
   // const fixedWidgetsRef = ref<FixedWidget[]>(Free.fixed);
   // 核心组件
-  const coreWidgetsRef = ref<CoreWidget<any>[]>(Free.core);
+  const coreWidgetsRef = ref<CoreWidget<any>[]>(Free.core ?? []);
   // 页面
   const pageWidgetsRef = ref<PageWidget<any>[]>([]);
   // aside dra start
@@ -23,6 +23,7 @@ export const useLayout = () => {
   const currentPageIdRef = ref<number>();
   // 右上角固定位widgets
   const fixedCoreWidgetsCompute = computed(() => {
+    console.log(coreWidgetsRef.value, 'conputed');
     return [
       ...coreWidgetsRef.value,
       headerWidgetRef.value,
