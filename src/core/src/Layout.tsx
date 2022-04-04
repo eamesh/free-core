@@ -36,10 +36,10 @@ export default defineComponent({
       widgetsRefs,
       headerWidgetRef,
       footerWidgetRef,
-      fixedWidgetsRef,
+      // fixedWidgetsRef,
       coreWidgetsRef,
-      headerRef,
-      footerRef,
+      // headerRef,
+      // footerRef,
       renderAction,
       currentFixedWidgetKey,
       fixedWidgetKeyDomRef,
@@ -85,6 +85,13 @@ export default defineComponent({
       };
     }
 
+    function setPageData () {
+      // 设置page widget
+      // 设置header widget
+      // 设置footer widget
+      //
+    }
+
     provide(freeLayoutInjectionKey, {
       asideDragStartRef,
       asideWidgetsRef,
@@ -94,10 +101,10 @@ export default defineComponent({
       asideGroupRef,
       headerWidgetRef,
       footerWidgetRef,
-      fixedWidgetsRef,
+      // fixedWidgetsRef,
       coreWidgetsRef,
-      headerRef,
-      footerRef,
+      // headerRef,
+      // footerRef,
       renderAction,
       currentFixedWidgetKey,
       fixedWidgetKeyDomRef,
@@ -109,7 +116,8 @@ export default defineComponent({
       pageWidgets: pageWidgetsRef,
       asideDragStart: asideDragStartRef,
       cssVarsRef,
-      getPageData
+      getPageData,
+      setPageData
     };
   },
 

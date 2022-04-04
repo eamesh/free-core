@@ -59,11 +59,11 @@ export interface FreeLayoutInjection {
 
   headerWidgetRef: Ref<CoreWidget<any>>;
   footerWidgetRef: Ref<CoreWidget<any>>;
-  fixedWidgetsRef: Ref<FixedWidget[]>;
+  // fixedWidgetsRef: Ref<FixedWidget[]>;
   coreWidgetsRef: Ref<CoreWidget<any>[]>;
 
-  headerRef: Ref;
-  footerRef: Ref;
+  // headerRef: Ref;
+  // footerRef: Ref;
 
   renderAction: Ref<WidgetNode>;
   currentFixedWidgetKey: Ref<string | undefined>;

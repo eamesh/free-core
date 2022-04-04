@@ -24,6 +24,7 @@ export default defineComponent({
     } = usePage();
 
     const {
+      model,
       renderAction
     } = useAction();
 
@@ -42,6 +43,7 @@ export default defineComponent({
     });
 
     return {
+      model,
       renderAction,
       currentFixedWidgetKey,
       active: activeCompute,
@@ -56,12 +58,18 @@ export default defineComponent({
     } = this;
 
     return (
-      <div class={[
-        'free-navigationbar',
-        {
-          active
-        }
-      ]} onClick={this.handleSelect}>
+      <div
+        class={[
+          'free-navigationbar',
+          {
+            active
+          }
+        ]}
+        onClick={this.handleSelect}
+        style={{
+          backgroundColor: this.model.backgroundColor
+        }}
+      >
         <div class='free-navigationbar-top'>
           <NSpace style={{
             padding: '0 14px 0 21px',

@@ -32,8 +32,8 @@ export default defineComponent({
     const {
       headerWidgetRef,
       footerWidgetRef,
-      headerRef,
-      footerRef,
+      // headerRef,
+      // footerRef,
       fixedWidgetKeyDomRef,
       currentFixedWidgetKey,
       pageStyleRef
@@ -95,6 +95,7 @@ export default defineComponent({
     watch(
       () => currentFixedWidgetKey.value,
       () => {
+        console.info(currentFixedWidgetKey.value, fixedWidgetKeyDomRef.value);
         currentFixedWidgetKey.value !== undefined && handleSetRenderAction(fixedWidgetKeyDomRef.value[currentFixedWidgetKey.value!].renderAction);
       }
     );
@@ -108,8 +109,8 @@ export default defineComponent({
       footerWidgetRef,
       fixedCoreWidgetsCompute,
       handleClickFixedCoreWidget,
-      headerRef,
-      footerRef,
+      // headerRef,
+      // footerRef,
       handleSetFixedWidgetKeyDomRef,
       pageStyle: pageStyleRef,
       currentFixedWidgetKey
@@ -148,7 +149,7 @@ export default defineComponent({
                     <NText>{widget?.name}</NText>
                   </div>
                 );
-              }).filter(item => item)
+              })
             }
           </NSpace>
         </div>
@@ -156,7 +157,10 @@ export default defineComponent({
           display: 'none'
         }}>
           {
-            fixedCoreWidgetsCompute.map((widget: CoreWidget<any>) => {
+            // 初始化dom
+            // 过滤掉free-footer free-header
+            // free-footer free-header 单独初始化
+            fixedCoreWidgetsCompute.filter((widget) => !['free-footer', 'free-header'].includes(widget.key)).map((widget: CoreWidget<any>) => {
               return <widget.component {...{
                 widgetKey: widget.key,
                 data: widget.data ?? {}
@@ -177,7 +181,7 @@ export default defineComponent({
             >
               {this.headerWidgetRef && this.headerWidgetRef.render
                 ? (
-                    <this.headerWidgetRef.component ref="headerRef" />
+                    <this.headerWidgetRef.component ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-header')} />
                   )
                 : null}
               <Draggable
@@ -206,7 +210,7 @@ export default defineComponent({
             <div class='preview-footer'>
               {this.footerWidgetRef && this.footerWidgetRef.render
                 ? (
-                    <this.footerWidgetRef.component ref="footerRef" />
+                    <this.footerWidgetRef.component ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-footer')} />
                   )
                 : null}
             </div>

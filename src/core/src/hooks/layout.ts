@@ -1,5 +1,5 @@
 import { computed, CSSProperties, ref } from 'vue';
-import { AsideGroup, CoreWidget, FixedWidget, PageWidget, Widget, WidgetNode, WidgetRefs } from '../interface';
+import { AsideGroup, CoreWidget, PageWidget, Widget, WidgetNode, WidgetRefs } from '../interface';
 import { Free } from '../../';
 
 export const useLayout = () => {
@@ -7,12 +7,12 @@ export const useLayout = () => {
   const asideWidgetsRef = ref<Widget<any>[] | AsideGroup[]>(Free.widgets);
   // 顶部组件
   const headerWidgetRef = ref<CoreWidget<any> | undefined>(Free.header ?? undefined);
-  const headerRef = ref();
+  // const headerRef = ref();
   // 底部组件
   const footerWidgetRef = ref<CoreWidget<any> | undefined>(Free.footer ?? undefined);
-  const footerRef = ref();
+  // const footerRef = ref();
   // 固定组件
-  const fixedWidgetsRef = ref<FixedWidget[]>(Free.fixed);
+  // const fixedWidgetsRef = ref<FixedWidget[]>(Free.fixed);
   // 核心组件
   const coreWidgetsRef = ref<CoreWidget<any>[]>(Free.core);
   // 页面
@@ -51,11 +51,11 @@ export const useLayout = () => {
     widgetsRefs,
     headerWidgetRef,
     footerWidgetRef,
-    fixedWidgetsRef,
+    // fixedWidgetsRef,
     fixedCoreWidgetsCompute,
     coreWidgetsRef,
-    headerRef,
-    footerRef,
+    // headerRef,
+    // footerRef,
     renderAction,
     currentFixedWidgetKey,
     fixedWidgetKeyDomRef,
