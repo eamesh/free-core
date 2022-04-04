@@ -1,6 +1,17 @@
 .title-text {
   padding: 0 16px;
 
+  h1,
+  p,
+  pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: initial;
+  }
+
   &__content {
     position: relative;
     padding: 16px 0;
