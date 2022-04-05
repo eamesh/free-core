@@ -124,6 +124,11 @@ export default defineComponent({
         data.core && (coreWidgetsRef.value = data.core);
       });
 
+      setTimeout(() => {
+        // 设置默认fixed wdiget
+        coreWidgetsRef.value.findIndex((widget) => widget.key === props.defaultFixedWidgetKey) !== -1 && (currentFixedWidgetKey.value = props.defaultFixedWidgetKey);
+      });
+
       console.log(coreWidgetsRef.value);
       // 重置
       currentFixedWidgetKey.value = undefined;

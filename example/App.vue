@@ -1,8 +1,7 @@
 <script setup lang="ts">
-// import { ref } from 'vue';
-// import { NButton } from 'naive-ui';
+import { NButton } from 'naive-ui';
 import { ref } from 'vue';
-import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget } from '../src';
+import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget, FreePageWidget } from '../src';
 import { AsideGroup } from '../src/core/src/interface';
 
 // Free.widgets = [
@@ -42,20 +41,20 @@ const freeRef = ref();
 //   console.log(page, core);
 // }
 
-// function handleClick () {
-//   freeRef.value.setPageData({
-//     core: [
-//       {
-//         ...FreePageWidget,
-//         data: {
-//           title: '默认页面',
-//           description: '',
-//           backgroundColor: '#f7f8fa'
-//         }
-//       }
-//     ]
-//   });
-
+function handleClick () {
+  freeRef.value.setPageData({
+    core: [
+      {
+        ...FreePageWidget,
+        data: {
+          title: '默认页面',
+          description: '',
+          backgroundColor: '#f7f8fa'
+        }
+      }
+    ]
+  });
+}
 // setTimeout(() => {
 //   console.log(freeRef.value.getPageData(), 'asd');
 // });
@@ -63,13 +62,13 @@ const freeRef = ref();
 </script>
 
 <template>
-  <!-- <NButton
+  <NButton
     type="primary"
     style="position: absolute; z-index: 1000; top: 0; right: 500px;"
     @click="handleClick"
   >
     发布
-  </NButton> -->
+  </NButton>
   <FreeLayout
     ref="freeRef"
     aside-group
