@@ -80,31 +80,14 @@ export default defineComponent({
 
     // 获取页面数据
     function getPageData (): PageData {
+      // widgetsRefs 独立于pageWidgetsRef的实例化缓存 id => dom的键值对 没有同步pageWidgetsRef的排序
+      // 这里page按pageWidgets顺序排列widgetsRefs
       return {
-        page: widgetsRefs.value,
+        pageWidgets: pageWidgetsRef.value,
+        page: pageWidgetsRef.value.map(widget => widgetsRefs.value[widget.id]),
         core: fixedWidgetKeyDomRef.value
       };
     }
-
-    provide(freeLayoutInjectionKey, {
-      asideDragStartRef,
-      asideWidgetsRef,
-      pageWidgetsRef,
-      currentPageIdRef,
-      widgetsRefs,
-      asideGroupRef,
-      headerWidgetRef,
-      footerWidgetRef,
-      // fixedWidgetsRef,
-      coreWidgetsRef,
-      // headerRef,
-      // footerRef,
-      renderAction,
-      currentFixedWidgetKey,
-      fixedWidgetKeyDomRef,
-      pageStyleRef,
-      fixedCoreWidgetsCompute
-    });
 
     // 设置页面数据
     function setPageData (data: PageDataSchemas) {
@@ -136,6 +119,26 @@ export default defineComponent({
       renderAction.value = null;
       fixedWidgetKeyDomRef.value = {};
     }
+
+    provide(freeLayoutInjectionKey, {
+      asideDragStartRef,
+      asideWidgetsRef,
+      pageWidgetsRef,
+      currentPageIdRef,
+      widgetsRefs,
+      asideGroupRef,
+      headerWidgetRef,
+      footerWidgetRef,
+      // fixedWidgetsRef,
+      coreWidgetsRef,
+      // headerRef,
+      // footerRef,
+      renderAction,
+      currentFixedWidgetKey,
+      fixedWidgetKeyDomRef,
+      pageStyleRef,
+      fixedCoreWidgetsCompute
+    });
 
     return {
       asideWidgets: asideWidgetsRef,

@@ -84,6 +84,7 @@ export interface PageDataSchemas {
 }
 
 export interface PageData {
+  pageWidgets: any[];
   page: any;
-  core: any;
+  core: any[];
 }
