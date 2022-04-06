@@ -7,7 +7,8 @@ export interface WidgetSchema<T = Object> {
   name: string;
   key: string;
   component: WidgetNode;
-  data?: T;
+  params?: Object; // 参数
+  data?: T; // 页面数据
 }
 
 // 组件
