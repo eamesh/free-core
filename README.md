@@ -1,8 +1,8 @@
 ### 微页面跨端编辑
-前端布局仿有赞微页面
-页面布局使用[naive-ui](https://github.com/TuSimple/naive-ui)
-主要功能: 核心和业务分离，根据核心api开发widget 挂载到核心直接diy  
-核心功能完成，抽空完成Widget开发，适配跨端微页面及小程序
+前端布局仿有赞微页面  
+页面布局使用[naive-ui](https://github.com/TuSimple/naive-ui)  
+主要功能: 核心和业务分离，根据核心api开发widget 挂载到核心直接diy    
+核心功能完成，抽空完成Widget开发，适配跨端微页面及小程序  
 
 ## Installation
 
