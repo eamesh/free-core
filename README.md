@@ -1,4 +1,5 @@
 ### 微页面跨端编辑
+
 前端布局仿有赞微页面  
 页面布局使用[naive-ui](https://github.com/TuSimple/naive-ui)  
 主要功能: 核心和业务分离，根据核心api开发widget 挂载到核心直接diy    
@@ -12,16 +13,19 @@ pnpm add -D free-core naive-ui
 <font size="2" color="red">注意：1.1.0-dev以下版本不可用</font>
 
 ## Preview
+
 基础功能预览[Preview](https://free.emesh.cloud)  
 基于[free-core](https://github.com/eamesh/free-core)的[Nutui](https://github.com/jdf2e/nutui)微页面编辑[Preview](https://nutui.emesh.cloud)
 
 ## Example
+
 > 示例代码[Example](https://github.com/eamesh/free/blob/dev/example/App.vue)  
 > 功能性Widget事例代码
 - [标题文本](https://github.com/eamesh/free/blob/dev/src/title-text/index.ts)
 - [图文导航](https://github.com/eamesh/free-nutui/blob/dev/src/components/image-nav/index.ts)
 
 ### Widget挂载到Core
+
 ```
 import { Free, FreeLayout, FreeTitleTextWidget, FreeWhiteHeightWidget, FreePageWidget, FreeFooterWidget, FreeHeaderWidget, FreeWidgetsManageWidget } from 'free-core'
 
@@ -207,8 +211,8 @@ export interface FreeLayoutInjection {
 ```
 > hooks相关暴露功能阅读hooks文件夹代码,有时间补相关文档
 
-
 ## Feature
+
 - [x] 主业务逻辑
 - [x] Widgets树挂载、功能挂件、核心挂件
 - [x] Widget 模板、Action分离
@@ -217,6 +221,7 @@ export interface FreeLayoutInjection {
 - [ ] 适配taro nutui [free-nutui](https://github.com/eamesh/free-nutui)
 
 ## Widget Feature
+
 - [x] 标题文本
 - [x] 辅助空白
 - [ ] 电梯导航
