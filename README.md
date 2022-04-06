@@ -8,73 +8,12 @@
 
 ```
 pnpm add -D free-core naive-ui
-
 ```
 <font size="2" color="red">注意：1.1.0-dev以下版本不可用</font>
 
-## Example
+## Preview
 基础功能预览[Preview](https://free.emesh.cloud)  
 基于[free-core](https://github.com/eamesh/free-core)的[Nutui](https://github.com/jdf2e/nutui)微页面编辑[Preview](https://nutui.emesh.cloud)
-
-## Documentation
-
-Widget类型
-- Widget(功能组件)
-- CoreWidget(系统组件)
-- FixedWidget(固定位组件)
-
-> 一个完整的Widget功能组件包含
-```
-{
-  thumb: string;
-  name: string;
-  key: string;
-  component: WidgetNode;
-  params?: Object; // 参数
-  data?: T; // 页面数据
-  
-}
-```
-
-> CoreWidget、FixedWidget功能组件包含
-```
-{
-  name: string;
-  key: string;
-  component: WidgetNode;
-  icon: VNode;
-  show: true; // 是否显示固定位
-  render: boolean; // Page是否渲染组件
-  params?: Object; // 参数
-  data?: T; // 页面数据
-}
-```
-
-### Core Layout
-
-> 核心暴露接口
-```
-export interface FreeLayoutInjection {
-  asideDragStartRef: Ref<boolean>;
-  asideWidgetsRef: Ref<Widget[] | AsideGroup[]>; // 右侧挂载菜单
-  pageWidgetsRef: Ref<PageWidget[]>; // Page渲染的组件树
-  currentPageIdRef: Ref<number | undefined>; // Page当前焦点Widget id
-  widgetsRefs: Ref<WidgetRefs>; // Page 缓存的widget句柄
-  asideGroupRef: Ref<boolean>; // 右侧菜单是否分组
-
-  headerWidgetRef: Ref<CoreWidget>;
-  footerWidgetRef: Ref<CoreWidget>;
-  coreWidgetsRef: Ref<CoreWidget[]>;
-
-  renderAction: Ref<WidgetNode>; // 当前渲染的右侧Action运行时
-  currentFixedWidgetKey: Ref<string | undefined>; // 固定位当前焦点key
-  fixedWidgetKeyDomRef: Ref<any>; // 固定位渲染的Widget 句柄集合
-
-  pageStyleRef: Ref<CSSProperties>; // Page 外层样式句柄
-  fixedCoreWidgetsCompute: ComputedRef<CoreWidget<any>[]>; // 当前fixedWidget显示的渲染树
-}
-```
-> hooks相关暴露功能阅读hooks文件夹代码,有时间补相关文档
 
 ## Example
 > 示例代码[Example](https://github.com/eamesh/free/blob/dev/example/App.vue)  
@@ -207,6 +146,67 @@ function handleSetDefaultPageData () {
 ```
 
 > 有空补文档
+
+## Documentation
+
+Widget类型
+- Widget(功能组件)
+- CoreWidget(系统组件)
+- FixedWidget(固定位组件)
+
+> 一个完整的Widget功能组件包含
+```
+{
+  thumb: string;
+  name: string;
+  key: string;
+  component: WidgetNode;
+  params?: Object; // 参数
+  data?: T; // 页面数据
+  
+}
+```
+
+> CoreWidget、FixedWidget功能组件包含
+```
+{
+  name: string;
+  key: string;
+  component: WidgetNode;
+  icon: VNode;
+  show: true; // 是否显示固定位
+  render: boolean; // Page是否渲染组件
+  params?: Object; // 参数
+  data?: T; // 页面数据
+}
+```
+
+### Core Layout
+
+> 核心暴露接口
+```
+export interface FreeLayoutInjection {
+  asideDragStartRef: Ref<boolean>;
+  asideWidgetsRef: Ref<Widget[] | AsideGroup[]>; // 右侧挂载菜单
+  pageWidgetsRef: Ref<PageWidget[]>; // Page渲染的组件树
+  currentPageIdRef: Ref<number | undefined>; // Page当前焦点Widget id
+  widgetsRefs: Ref<WidgetRefs>; // Page 缓存的widget句柄
+  asideGroupRef: Ref<boolean>; // 右侧菜单是否分组
+
+  headerWidgetRef: Ref<CoreWidget>;
+  footerWidgetRef: Ref<CoreWidget>;
+  coreWidgetsRef: Ref<CoreWidget[]>;
+
+  renderAction: Ref<WidgetNode>; // 当前渲染的右侧Action运行时
+  currentFixedWidgetKey: Ref<string | undefined>; // 固定位当前焦点key
+  fixedWidgetKeyDomRef: Ref<any>; // 固定位渲染的Widget 句柄集合
+
+  pageStyleRef: Ref<CSSProperties>; // Page 外层样式句柄
+  fixedCoreWidgetsCompute: ComputedRef<CoreWidget<any>[]>; // 当前fixedWidget显示的渲染树
+}
+```
+> hooks相关暴露功能阅读hooks文件夹代码,有时间补相关文档
+
 
 ## Feature
 - [x] 主业务逻辑
