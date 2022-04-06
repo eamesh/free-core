@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     name: Build and deploy gh-pages
-    env: 
+    env:
       MY_SECRET: ${{secrets.gh_pages}}
       USER_NAME: eamesh
       USER_EMAIL: easeava@gmail.com
@@ -33,9 +33,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-        
+
     - run: pnpm install
-    - run: pnpm build
+    - run: pnpm build:gh-pages
     - name: Commit gh-pages
       run: |
         cd $BUILD_PATH
