@@ -1,8 +1,8 @@
 ### 微页面跨端编辑
-教弟弟业务代码，写到这块东西。觉得开源出来还挺有趣  
 前端布局仿有赞微页面
-主要功能核心业务分离，根据api开发widget 挂载到核心直接diy  
-核心功能完成，抽空完成Widget开发，适配跨端小程序
+页面布局使用[naive-ui](https://github.com/TuSimple/naive-ui)
+主要功能: 核心和业务分离，根据核心api开发widget 挂载到核心直接diy  
+核心功能完成，抽空完成Widget开发，适配跨端微页面及小程序
 
 ## Installation
 
@@ -30,6 +30,9 @@ Widget类型
   name: string;
   key: string;
   component: WidgetNode;
+  params?: Object; // 参数
+  data?: T; // 页面数据
+  
 }
 ```
 
@@ -42,6 +45,8 @@ Widget类型
   icon: VNode;
   show: true; // 是否显示固定位
   render: boolean; // Page是否渲染组件
+  params?: Object; // 参数
+  data?: T; // 页面数据
 }
 ```
 
@@ -59,24 +64,23 @@ export interface FreeLayoutInjection {
 
   headerWidgetRef: Ref<CoreWidget>;
   footerWidgetRef: Ref<CoreWidget>;
-  fixedWidgetsRef: Ref<FixedWidget[]>;
   coreWidgetsRef: Ref<CoreWidget[]>;
-
-  headerRef: Ref;
-  footerRef: Ref;
 
   renderAction: Ref<WidgetNode>; // 当前渲染的右侧Action运行时
   currentFixedWidgetKey: Ref<string | undefined>; // 固定位当前焦点key
   fixedWidgetKeyDomRef: Ref<any>; // 固定位渲染的Widget 句柄集合
 
   pageStyleRef: Ref<CSSProperties>; // Page 外层样式句柄
+  fixedCoreWidgetsCompute: ComputedRef<CoreWidget<any>[]>; // 当前fixedWidget显示的渲染树
 }
 ```
 > hooks相关暴露功能阅读hooks文件夹代码,有时间补相关文档
 
 ## Example
 > 示例代码[Example](https://github.com/eamesh/free/blob/dev/example/App.vue)  
-> 功能性Widget事例代码[标题文本](https://github.com/eamesh/free/blob/dev/src/title-text/src/TitleText.tsx)
+> 功能性Widget事例代码
+- [标题文本](https://github.com/eamesh/free/blob/dev/src/title-text/index.ts)
+- [图文导航](https://github.com/eamesh/free-nutui/blob/dev/src/components/image-nav/index.ts)
 
 ### Widget挂载到Core
 ```
@@ -131,7 +135,7 @@ const freeLayoutRef = ref();
 function handleGetPageData () {
   console.info('%c=====> getPageData:', 'color: #43bb88;font-size: 12px;font-weight: bold;text-decoration: underline;', freeLayoutRef.value.getPageData());
   const datas = freeLayoutRef.value.getPageData() as any;
-  const page = Object.values(datas.page).map((item: any) => {
+  const page = datas.page.map((item: any) => {
     return {
       key: item.widgetKey,
       data: item.model
