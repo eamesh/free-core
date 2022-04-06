@@ -165,7 +165,8 @@ export default defineComponent({
             this.fixedCoreWidgetsCompute.filter((widget) => !['free-footer', 'free-header'].includes(widget.key)).map((widget: CoreWidget<any>) => {
               return <widget.component {...{
                 widgetKey: widget.key,
-                data: widget.data ? cloneDeep(widget.data) : {}
+                data: widget.data ? cloneDeep(widget.data) : {},
+                params: widget.params ?? {}
               }} ref={(e) => handleSetFixedWidgetKeyDomRef(e, widget.key)} />;
             })
           }
@@ -187,7 +188,9 @@ export default defineComponent({
                       widgetKey: this.headerWidgetRef.key,
                       data: this.headerWidgetRef.data
                         ? cloneDeep(this.headerWidgetRef.data)
-                        : {}
+                        : {},
+                      params: this.headerWidgetRef.params ?? {}
+
                     }} ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-header')} />
                   )
                 : null}
@@ -218,10 +221,11 @@ export default defineComponent({
               {this.footerWidgetRef && this.footerWidgetRef.render
                 ? (
                     <this.footerWidgetRef.component {...{
-                      widgetKey: this.headerWidgetRef.key,
+                      widgetKey: this.footerWidgetRef.key,
                       data: this.footerWidgetRef.data
                         ? cloneDeep(this.footerWidgetRef.data)
-                        : {}
+                        : {},
+                      params: this.footerWidgetRef.params ?? {}
                     }} ref={e => handleSetFixedWidgetKeyDomRef(e, 'free-footer')} />
                   )
                 : null}

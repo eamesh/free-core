@@ -1,35 +1,31 @@
 import { PropType } from 'vue';
 import { PageWidget } from '../interface';
 
+const commonWidgetDataProps = <T>(defaultData: T) => (
+  {
+    widgetKey: {
+      type: String,
+      required: true
+    },
+    data: {
+      type: Object as PropType<T>,
+      default: () => (defaultData)
+    },
+    params: Object
+  }
+);
+
 export const widgetDataProps = <T>(defaultData: T) => (
   {
     id: {
       type: Number,
       required: true
     },
-    widgetKey: {
-      type: String,
-      required: true
-    },
-    data: {
-      type: Object as PropType<T>,
-      default: () => (defaultData)
-    }
+    ...commonWidgetDataProps<T>(defaultData)
   }
 );
 
-export const fixedWidgetDataProps = <T>(defaultData: T) => (
-  {
-    widgetKey: {
-      type: String,
-      required: true
-    },
-    data: {
-      type: Object as PropType<T>,
-      default: () => (defaultData)
-    }
-  }
-);
+export const fixedWidgetDataProps = commonWidgetDataProps;
 
 // 根据page wiget树生成id
 export const generatorPageWidgetId = (widgets: PageWidget<any>[]) => {
