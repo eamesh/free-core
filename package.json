@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build:gh-pages": "vue-tsc --noEmit && vite build --base=./",
     "build:lib": "rimraf lib && node ./scripts/build-lib.js && pnpm build:dts && rimraf tsconfig.node.tsbuildinfo",
     "preview": "vite preview",
     "lint:eslint": "eslint \"src/**/*.{vue,js,ts,tsx}\" --fix",
