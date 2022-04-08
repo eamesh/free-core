@@ -6,6 +6,7 @@ const { resolve } = require('path');
 const buildConfig = defineConfig({
   plugins: [vue(), vueJsx()],
   build: {
+    minify: 'terser',
     outDir: 'lib',
     lib: {
       entry: resolve(__dirname, '../src/index.ts'),
@@ -23,6 +24,12 @@ const buildConfig = defineConfig({
           vue: 'Vue',
           'naive-ui': 'naive-ui'
         }
+      }
+    },
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
       }
     }
   }
