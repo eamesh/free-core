@@ -1,6 +1,6 @@
 import { NCollapse, NCollapseItem, NSpace, NText } from 'naive-ui';
 import { computed, defineComponent } from 'vue';
-import { AsideGroup, Widget } from '../interface';
+import { Widget, AsideGroupOnId } from '../interface';
 import Draggable from 'vuedraggable';
 import { useAside } from '../hooks/aside';
 import { usePage } from '../hooks/page';
@@ -112,7 +112,7 @@ export default defineComponent({
         ? <NCollapse defaultExpandedNames={defaultExpandedAsideName}>
           {}
             {
-              (asidesCompute as AsideGroup[]).map(group => {
+              (asidesCompute as AsideGroupOnId[]).map(group => {
                 return (
                   <NCollapseItem
                     title={group.title}

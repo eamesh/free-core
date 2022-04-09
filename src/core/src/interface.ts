@@ -40,6 +40,10 @@ export interface PageWidget<T> extends Widget<T> {
   id: number;
 }
 
+export interface AsideWidget<T> extends Widget<T> {
+  id: number;
+}
+
 export interface WidgetRefs {
   [key: number]: Ref<WidgetNode>;
 }
@@ -48,6 +52,12 @@ export interface AsideGroup {
   title: string;
   key: string;
   children: Widget<any>[];
+}
+
+export interface AsideGroupOnId {
+  title: string;
+  key: string;
+  children: PageWidget<any>[];
 }
 
 export interface FreeLayoutInjection {
@@ -73,6 +83,12 @@ export interface FreeLayoutInjection {
   pageStyleRef: Ref<CSSProperties>;
 
   fixedCoreWidgetsCompute: ComputedRef<CoreWidget<any>[]>;
+
+  flattenAsidesCompute: ComputedRef<AsideWidget<any>[]>;
+  asidesCompute: ComputedRef<Widget<any>[] | AsideGroupOnId[]>;
+
+  currentPageWidget: ComputedRef<PageWidget<any>>;
+  currentPageWidgetIndex: ComputedRef<number>;
 }
 
 export const freeLayoutInjectionKey = createInjectionKey<FreeLayoutInjection>('free-layout');

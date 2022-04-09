@@ -76,7 +76,7 @@ export default defineComponent({
 
       // 一维组件集合获取Widget 并添加
       const widget = flattenAsidesCompute.value.find(item => item.key === currentPageWidget.value?.key);
-      handleAddPageWidget(widget);
+      handleAddPageWidget(widget!);
     }
 
     // 备注

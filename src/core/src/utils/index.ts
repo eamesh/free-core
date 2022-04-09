@@ -33,3 +33,16 @@ export const generatorPageWidgetId = (widgets: PageWidget<any>[]) => {
   const sort = [...widgets].sort((prev, next) => next.id - prev.id);
   return sort.shift()!.id + 1;
 };
+
+// 拉平
+export const flatten = (data: any): any[] => {
+  let children: any[] = [];
+  data.map((item: any) => {
+    if (item.children && item.children.length) {
+      children = [...children, ...item.children];
+    }
+    return item;
+  }).concat(children.length ? flatten(children) : children);
+
+  return children;
+};

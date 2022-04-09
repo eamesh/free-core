@@ -4,11 +4,12 @@ import { useLayout } from './hooks/layout';
 import Aside from './components/Aside';
 import Page from './components/Page';
 import Action from './components/Action';
-import { PageDataSchemas, freeLayoutInjectionKey, PageData } from './interface';
+import { PageDataSchemas, freeLayoutInjectionKey, PageData, AsideGroup, AsideGroupOnId, Widget } from './interface';
 import freeLight, { FreeTheme } from './light';
 import { ThemeProps, useConfig, useTheme } from 'naive-ui/lib/_mixins';
 
 import './style.scss';
+import { flatten } from './utils';
 
 const freeLayoutProps = {
   ...(useTheme.props as ThemeProps<FreeTheme>),
@@ -78,6 +79,42 @@ export default defineComponent({
       };
     });
 
+    // 拉平左侧分组菜单组件
+    const flattenAsidesCompute = computed(() => {
+      return flatten(asidesCompute.value);
+    });
+
+    // 左侧菜单分组插入id
+    const asidesCompute = computed(() => {
+      let _id = 0;
+      return asideWidgetsRef.value.map(item => {
+        return asideGroupRef.value
+          ? {
+              ...item,
+              children: (item as AsideGroup).children.map(child => {
+                return {
+                  ...child,
+                  id: _id++
+                };
+              })
+            }
+          : {
+              ...item,
+              id: _id++
+            };
+      }) as Widget<any>[] | AsideGroupOnId[];
+    });
+
+    // 当前Page焦点widget
+    const currentPageWidget = computed(() => {
+      return pageWidgetsRef.value.find(item => item.id === currentPageIdRef.value);
+    });
+
+    // 当前Page焦点widget index
+    const currentPageWidgetIndex = computed(() => {
+      return pageWidgetsRef.value.findIndex(item => item.id === currentPageIdRef.value);
+    });
+
     // 获取页面数据
     function getPageData (): PageData {
       // widgetsRefs 独立于pageWidgetsRef的实例化缓存 id => dom的键值对 没有同步pageWidgetsRef的排序
@@ -137,7 +174,11 @@ export default defineComponent({
       currentFixedWidgetKey,
       fixedWidgetKeyDomRef,
       pageStyleRef,
-      fixedCoreWidgetsCompute
+      fixedCoreWidgetsCompute,
+      flattenAsidesCompute,
+      asidesCompute,
+      currentPageWidget,
+      currentPageWidgetIndex
     });
 
     return {

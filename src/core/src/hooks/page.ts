@@ -1,5 +1,4 @@
-import { computed } from 'vue';
-import { Widget } from '../interface';
+import { AsideWidget } from '../interface';
 import { generatorPageWidgetId } from '../utils';
 import { useFree } from './free';
 
@@ -8,7 +7,9 @@ export function usePage () {
     pageWidgetsRef,
     currentPageIdRef,
     widgetsRefs,
-    currentFixedWidgetKey
+    currentPageWidget,
+    currentFixedWidgetKey,
+    currentPageWidgetIndex
   } = useFree();
 
   // 设置当前page焦点id
@@ -24,7 +25,7 @@ export function usePage () {
   }
 
   // 添加Page widget
-  function handleAddPageWidget (widget: Widget<any>) {
+  function handleAddPageWidget (widget: AsideWidget<any>) {
     // const id = pageWidgetsRef.value.length;
     const id = generatorPageWidgetId(pageWidgetsRef.value);
     pageWidgetsRef.value.push({
@@ -57,15 +58,15 @@ export function usePage () {
     currentPageIdRef.value = undefined;
   }
 
-  // 当前Page焦点widget
-  const currentPageWidget = computed(() => {
-    return pageWidgetsRef.value.find(item => item.id === currentPageIdRef.value);
-  });
+  // // 当前Page焦点widget
+  // const currentPageWidget = computed(() => {
+  //   return pageWidgetsRef.value.find(item => item.id === currentPageIdRef.value);
+  // });
 
-  // 当前Page焦点widget index
-  const currentPageWidgetIndex = computed(() => {
-    return pageWidgetsRef.value.findIndex(item => item.id === currentPageIdRef.value);
-  });
+  // // 当前Page焦点widget index
+  // const currentPageWidgetIndex = computed(() => {
+  //   return pageWidgetsRef.value.findIndex(item => item.id === currentPageIdRef.value);
+  // });
 
   // 设置page widgets ref用于获取实体
   // 对应关系 id => widget
