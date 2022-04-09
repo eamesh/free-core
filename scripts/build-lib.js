@@ -27,14 +27,14 @@ const buildConfig = defineConfig({
         }
       }
     }
+  },
+  esbuild: {
+    pure: [
+      'console.log',
+      'debugger'
+    ],
+    minify: true
   }
-  // esbuild: {
-  //   pure: [
-  //     'console.log',
-  //     'debugger'
-  //   ],
-  //   minify: true
-  // }
 });
 
 const example = async () => {
