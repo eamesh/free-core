@@ -3,6 +3,8 @@ import { AsideGroup, CoreWidget, PageWidget, Widget, WidgetNode, WidgetRefs } fr
 import { Free } from '../../';
 
 export const useLayout = () => {
+  // 页面容器
+  const pageContentRef = ref<any>();
   // 组件
   const asideWidgetsRef = ref<Widget<any>[] | AsideGroup[]>(Free.widgets);
   // 顶部组件
@@ -19,7 +21,7 @@ export const useLayout = () => {
   const pageWidgetsRef = ref<PageWidget<any>[]>([]);
   // aside dra start
   const asideDragStartRef = ref(false);
-  // 当前Page焦点组件索引
+  // 当前Page焦点组件id
   const currentPageIdRef = ref<number>();
   // 右上角固定位widgets
   const fixedCoreWidgetsCompute = computed(() => {
@@ -35,7 +37,7 @@ export const useLayout = () => {
   // 当前选中的固定Widget key
   const currentFixedWidgetKey = ref<string>();
 
-  // Page refs
+  // Page refs id => dom
   const widgetsRefs = ref<WidgetRefs>({});
 
   // fixed widget ref实例化缓存
@@ -45,6 +47,7 @@ export const useLayout = () => {
   const pageStyleRef = ref<CSSProperties>();
 
   return {
+    pageContentRef,
     asideWidgetsRef,
     pageWidgetsRef,
     asideDragStartRef,

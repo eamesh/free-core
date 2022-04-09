@@ -178,7 +178,7 @@ export default defineComponent({
       model
     } = this;
     return (
-      <>
+      <div>
         {
           model.type === 'empty'
             ? (
@@ -197,7 +197,7 @@ export default defineComponent({
                 </div>
               )
         }
-      </>
+      </div>
     );
   }
 });

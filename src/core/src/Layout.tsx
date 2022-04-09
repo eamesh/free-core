@@ -30,6 +30,7 @@ export default defineComponent({
 
   setup (props) {
     const {
+      pageContentRef,
       asideWidgetsRef,
       pageWidgetsRef,
       asideDragStartRef,
@@ -158,6 +159,7 @@ export default defineComponent({
     }
 
     provide(freeLayoutInjectionKey, {
+      pageContentRef,
       asideDragStartRef,
       asideWidgetsRef,
       pageWidgetsRef,
@@ -182,6 +184,7 @@ export default defineComponent({
     });
 
     return {
+      pageContentRef,
       asideWidgets: asideWidgetsRef,
       pageWidgets: pageWidgetsRef,
       asideDragStart: asideDragStartRef,
@@ -219,6 +222,7 @@ export default defineComponent({
           }}
           class='free-content'
           nativeScrollbar={false}
+          ref="pageContentRef"
         >
           <Page />
         </NLayout>

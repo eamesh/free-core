@@ -61,6 +61,7 @@ export interface AsideGroupOnId {
 }
 
 export interface FreeLayoutInjection {
+  pageContentRef: Ref<any>;
   asideDragStartRef: Ref<boolean>;
   asideWidgetsRef: Ref<Widget<any>[] | AsideGroup[]>;
   pageWidgetsRef: Ref<PageWidget<any>[]>;
