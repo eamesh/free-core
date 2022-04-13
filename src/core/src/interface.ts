@@ -91,6 +91,7 @@ export interface FreeLayoutInjection {
 
   currentPageWidget: ComputedRef<PageWidget<any>>;
   currentPageWidgetIndex: ComputedRef<number>;
+  widgetsUsed: ComputedRef<{[key: string]: number}>;
 }
 
 export const freeLayoutInjectionKey = createInjectionKey<FreeLayoutInjection>('free-layout');
