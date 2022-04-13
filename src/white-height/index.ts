@@ -6,7 +6,7 @@ import Thumb from './assets/thumb.png';
 export const FreeWhiteHeightWidget: Widget<WhiteHeightProps> = {
   name: '辅助空白',
   key: 'white-height',
-  allowCount: 10,
+  allowCount: 50,
   thumb: Thumb,
   component: markRaw(WhiteHeight),
   data: {

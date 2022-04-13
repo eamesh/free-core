@@ -6,7 +6,7 @@ import Thumb from './assets/thumb.png';
 export const FreeTitleTextWidget: Widget<TitleTextProps> = {
   name: '标题文本',
   key: 'title-text',
-  allowCount: 10,
+  allowCount: 50,
   thumb: Thumb,
   component: markRaw(TitleText),
   data: {
