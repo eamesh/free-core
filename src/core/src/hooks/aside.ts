@@ -8,7 +8,8 @@ export function useAside () {
     asideWidgetsRef,
     // asideGroupRef
     asidesCompute,
-    flattenAsidesCompute
+    flattenAsidesCompute,
+    widgetsUsed
   } = useFree();
 
   function handleSetAsideDragStart (start = false) {
@@ -51,6 +52,7 @@ export function useAside () {
   // });
 
   return {
+    widgetsUsed,
     asideWidgetsRef,
     asideDragStartRef,
     asidesCompute,

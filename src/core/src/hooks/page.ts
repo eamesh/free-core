@@ -4,6 +4,7 @@ import { useFree } from './free';
 
 export function usePage () {
   const {
+    widgetsUsed,
     pageWidgetsRef,
     currentPageIdRef,
     widgetsRefs,
@@ -26,6 +27,9 @@ export function usePage () {
 
   // 添加Page widget
   function handleAddPageWidget (widget: AsideWidget<any>) {
+    // 判断已使用个数
+    if (widgetsUsed.value[widget.key] >= widget.allowCount) return;
+
     // const id = pageWidgetsRef.value.length;
     const id = generatorPageWidgetId(pageWidgetsRef.value);
     pageWidgetsRef.value.push({

@@ -42,6 +42,7 @@ export interface PageWidget<T> extends Widget<T> {
 
 export interface AsideWidget<T> extends Widget<T> {
   id: number;
+  usedCount: number
 }
 
 export interface WidgetRefs {
@@ -86,7 +87,7 @@ export interface FreeLayoutInjection {
   fixedCoreWidgetsCompute: ComputedRef<CoreWidget<any>[]>;
 
   flattenAsidesCompute: ComputedRef<AsideWidget<any>[]>;
-  asidesCompute: ComputedRef<Widget<any>[] | AsideGroupOnId[]>;
+  asidesCompute: ComputedRef<AsideWidget<any>[] | AsideGroupOnId[]>;
 
   currentPageWidget: ComputedRef<PageWidget<any>>;
   currentPageWidgetIndex: ComputedRef<number>;

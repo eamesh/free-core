@@ -1,6 +1,6 @@
 import { NCollapse, NCollapseItem, NSpace, NText } from 'naive-ui';
 import { computed, defineComponent } from 'vue';
-import { Widget, AsideGroupOnId } from '../interface';
+import { Widget, AsideGroupOnId, AsideWidget } from '../interface';
 import Draggable from 'vuedraggable';
 import { useAside } from '../hooks/aside';
 import { usePage } from '../hooks/page';
@@ -24,6 +24,7 @@ export default defineComponent({
 
   setup (props) {
     const {
+      widgetsUsed,
       asideWidgetsRef,
       asidesCompute,
       flattenAsidesCompute,
@@ -42,7 +43,9 @@ export default defineComponent({
     // 组装待添加Page数据
     function handleClone ({ id }: { id: number }) {
       console.log('clone id', id, flattenAsidesCompute.value);
+      // 判断已使用个数
       const currentWidget = flattenAsidesCompute.value.find(item => item.id === id);
+      if (widgetsUsed.value[currentWidget!.key] >= currentWidget!.allowCount) return;
 
       return {
         ...currentWidget,
@@ -51,6 +54,7 @@ export default defineComponent({
     }
 
     return {
+      widgetsUsed,
       asidesCompute,
       asideWidgets: asideWidgetsRef,
       defaultExpandedAsideName,
@@ -62,6 +66,7 @@ export default defineComponent({
 
   render () {
     const {
+      widgetsUsed,
       asidesCompute,
       asideGroup,
       defaultExpandedAsideName,
@@ -86,8 +91,7 @@ export default defineComponent({
           }}
         >
           {{
-            item: ({ element }: { element: any }) => {
-              console.log(element);
+            item: ({ element }: { element: AsideWidget<any> }) => {
               return <div class='aside-ngi' onClick={() => handleAddPageWidget(element)}>
                 <NSpace
                   vertical
@@ -98,7 +102,7 @@ export default defineComponent({
                     backgroundImage: `url(${element.thumb})`
                   }} />
                   <NText class='aside-name'>{element.name}</NText>
-                  {/* <NText class='aside-count' depth="3">{element.allowCount}</NText> */}
+                  <NText class='aside-count' depth={3}>{widgetsUsed[element.key]}/{element.allowCount}</NText>
                 </NSpace>
               </div>;
             }
@@ -119,59 +123,13 @@ export default defineComponent({
                     name={group.key}
                   >
                     {renderDragAside(group.children)}
-                    {/* <Draggable list={group.children} tag="NGrid" componentData={{
-                      yGap: 12,
-                      cols: 2
-                    }} itemKey="name">
-                      {{
-                        item: ({ element }: { element: any }) => {
-                          console.log(element);
-                          return <NGi class='aside-ngi'>
-                            <NSpace
-                              vertical
-                              align='center'
-                              size={0}
-                            >
-                              <i class='aside-image' style={{
-                                backgroundImage: 'url(https://img01.yzcdn.cn/public_files/2019/02/12/add4829af43def85a200029c3e485d77.png)'
-                              }} />
-                              <NText class='aside-name'>{element.name}</NText>
-                              <NText class='aside-count' depth="3">{element.allowCount}</NText>
-                            </NSpace>
-                          </NGi>;
-                        }
-                      }}
-                    </Draggable> */}
                   </NCollapseItem>
                 );
               })
             }
           </NCollapse>
         : (
-            renderDragAside(asidesCompute as Widget<any>[])
-          // <NGrid yGap={12} cols={2}>
-          //   {
-          //     (asideWidgets as Widget[]).map(child => {
-          //       return (
-          //         <NGi class='aside-ngi' {...{
-          //           draggable: true
-          //         }}>
-          //           <NSpace
-          //             vertical
-          //             align='center'
-          //             size={0}
-          //           >
-          //             <i class='aside-image' style={{
-          //               backgroundImage: 'url(https://img01.yzcdn.cn/public_files/2019/02/12/add4829af43def85a200029c3e485d77.png)'
-          //             }} />
-          //             <NText class='aside-name'>{child.name}</NText>
-          //             <NText class='aside-count' depth="3">{child.allowCount}</NText>
-          //           </NSpace>
-          //         </NGi>
-          //       );
-          //     })
-          //   }
-          // </NGrid>
+            renderDragAside(asidesCompute as AsideWidget<any>[])
           )
     );
   }

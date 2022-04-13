@@ -4,7 +4,7 @@ import { useLayout } from './hooks/layout';
 import Aside from './components/Aside';
 import Page from './components/Page';
 import Action from './components/Action';
-import { PageDataSchemas, freeLayoutInjectionKey, PageData, AsideGroup, AsideGroupOnId, Widget } from './interface';
+import { PageDataSchemas, freeLayoutInjectionKey, PageData, AsideGroup, AsideGroupOnId, AsideWidget } from './interface';
 import freeLight, { FreeTheme } from './light';
 import { ThemeProps, useConfig, useTheme } from 'naive-ui/lib/_mixins';
 
@@ -82,7 +82,7 @@ export default defineComponent({
 
     // 拉平左侧分组菜单组件
     const flattenAsidesCompute = computed(() => {
-      return flatten(asidesCompute.value);
+      return flatten(asidesCompute.value) as AsideWidget<any>[];
     });
 
     // 左侧菜单分组插入id
@@ -95,15 +95,27 @@ export default defineComponent({
               children: (item as AsideGroup).children.map(child => {
                 return {
                   ...child,
-                  id: _id++
+                  id: _id++,
+                  usedCount: 0
                 };
               })
             }
           : {
               ...item,
-              id: _id++
+              id: _id++,
+              usedCount: 0
             };
-      }) as Widget<any>[] | AsideGroupOnId[];
+      }) as AsideWidget<any>[] | AsideGroupOnId[];
+    });
+
+    const widgetsUsed = computed(() => {
+      const widgetsUsedByKey: { [key: string]: number; } = {};
+
+      flattenAsidesCompute.value.forEach(item => {
+        widgetsUsedByKey[item.key] = pageWidgetsRef.value.filter(pageWidget => pageWidget.key === item.key).length;
+      });
+
+      return widgetsUsedByKey;
     });
 
     // 当前Page焦点widget
@@ -180,7 +192,8 @@ export default defineComponent({
       flattenAsidesCompute,
       asidesCompute,
       currentPageWidget,
-      currentPageWidgetIndex
+      currentPageWidgetIndex,
+      widgetsUsed
     });
 
     return {
