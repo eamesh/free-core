@@ -18,7 +18,7 @@ export const FreeTitleTextWidget: Widget<TitleTextProps> = {
       text: '',
       aligin: 'left',
       style: {
-        fontSize: '16px',
+        fontSize: 16,
         fontWeight: 'bold',
         color: '#323233'
       }
@@ -26,7 +26,7 @@ export const FreeTitleTextWidget: Widget<TitleTextProps> = {
     description: {
       text: '',
       style: {
-        fontSize: '12px',
+        fontSize: 12,
         fontWeight: '400',
         color: '#969799'
       }

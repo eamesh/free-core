@@ -16,7 +16,7 @@ export const FreeWhiteHeightWidget: Widget<WhiteHeightProps> = {
     },
     line: {
       style: 'solid',
-      padding: '0',
+      paddingX: 0,
       color: '#e5e5e5'
     }
   }

@@ -15,7 +15,7 @@ export interface WhiteHeightProps {
   },
   line: {
     style: WhiteHeightLineStyle
-    padding: string
+    paddingX: number
     color: string
   }
 }
@@ -30,7 +30,7 @@ export default defineComponent({
     },
     line: {
       style: 'solid',
-      padding: '0',
+      paddingX: 0,
       color: '#e5e5e5'
     }
   }),
@@ -126,16 +126,16 @@ export default defineComponent({
                         </NFormItem>
                         <NFormItem label='左右边距'>
                           <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
-                            <NText>{ modelUnref.line.padding !== '0' ? '左右留边' : '无边距' }</NText>
-                            <NRadioGroup v-model:value={modelUnref.line.padding}>
-                              <NRadioButton value='0' key='false'>
+                            <NText>{ modelUnref.line.paddingX !== 0 ? '左右留边' : '无边距' }</NText>
+                            <NRadioGroup v-model:value={modelUnref.line.paddingX}>
+                              <NRadioButton value={0} key='false'>
                                 <NIcon size={20} style={{
                                   marginTop: '6px'
                                 }}>
                                   <BorderOutside24Regular />
                                 </NIcon>
                               </NRadioButton>
-                              <NRadioButton value='0 15px' key='true'>
+                              <NRadioButton value={15} key='true'>
                                 <NIcon size={20} style={{
                                   marginTop: '7px'
                                 }}>
@@ -189,7 +189,7 @@ export default defineComponent({
             : (
                 <div class='white-line' style={{
                   height: '8px',
-                  padding: model.line.padding
+                  padding: `0 ${model.line.paddingX}px`
                 }}>
                   <div style={{
                     borderTop: `1px ${model.line.style} ${model.line.color}`

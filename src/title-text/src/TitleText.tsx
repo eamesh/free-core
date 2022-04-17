@@ -8,7 +8,7 @@ import './style.scss';
 
 export type TitleTextTitleAligin = 'left' | 'center';
 export type TitleTextWeight = 'bold' | '400';
-export type TitleTextFontSize = '16px' | '14px' | '12px';
+export type TitleTextFontSize = 16 | 14 | 12;
 export interface TitleTextProps {
   bottomDivider: boolean,
   style: {
@@ -45,7 +45,7 @@ export default defineComponent({
       text: '',
       aligin: 'left',
       style: {
-        fontSize: '16px',
+        fontSize: 16,
         fontWeight: 'bold',
         color: '#323233'
       }
@@ -53,7 +53,7 @@ export default defineComponent({
     description: {
       text: '',
       style: {
-        fontSize: '12px',
+        fontSize: 12,
         fontWeight: '400',
         color: '#969799'
       }
@@ -75,16 +75,16 @@ export default defineComponent({
 
     const modelUnref = unref(model);
 
-    function handleGetFontSizeText (fontSize: string) {
+    function handleGetFontSizeText (fontSize: number) {
       let text = '';
       switch (fontSize) {
-        case '16px':
+        case 16:
           text = '大(16号)';
           break;
-        case '14px':
+        case 14:
           text = '中(14号)';
           break;
-        case '12px':
+        case 12:
           text = '小(12号)';
           break;
       }
@@ -173,21 +173,21 @@ export default defineComponent({
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{showTitleFontSizeText.value}</NText>
                     <NRadioGroup size='small' v-model:value={modelUnref.title.style.fontSize}>
-                      <NRadioButton value='16px' key='big'>
+                      <NRadioButton value={16} key='big'>
                         <NIcon size={16} style={{
                           marginTop: '6px'
                         }}>
                           <TextFont20Regular />
                         </NIcon>
                       </NRadioButton>
-                      <NRadioButton value='14px' key='mid'>
+                      <NRadioButton value={14} key='mid'>
                         <NIcon size={14} style={{
                           marginTop: '6px'
                         }}>
                           <TextFont20Regular />
                         </NIcon>
                       </NRadioButton>
-                      <NRadioButton value='12px' key='small'>
+                      <NRadioButton value={12} key='small'>
                         <NIcon size={12} style={{
                           marginTop: '6px'
                         }}>
@@ -201,21 +201,21 @@ export default defineComponent({
                   <NSpace align='center' justify='space-between' style={{ width: '100%' }}>
                     <NText>{showDescriptionFontSizeText.value}</NText>
                     <NRadioGroup size='small' v-model:value={modelUnref.description.style.fontSize}>
-                      <NRadioButton value='16px' key='big'>
+                      <NRadioButton value={16} key='big'>
                         <NIcon size={16} style={{
                           marginTop: '6px'
                         }}>
                           <TextFont20Regular />
                         </NIcon>
                       </NRadioButton>
-                      <NRadioButton value='14px' key='mid'>
+                      <NRadioButton value={14} key='mid'>
                         <NIcon size={14} style={{
                           marginTop: '6px'
                         }}>
                           <TextFont20Regular />
                         </NIcon>
                       </NRadioButton>
-                      <NRadioButton value='12px' key='small'>
+                      <NRadioButton value={12} key='small'>
                         <NIcon size={12} style={{
                           marginTop: '6px'
                         }}>
@@ -319,15 +319,33 @@ export default defineComponent({
       );
     }
 
+    const titleStyle = computed(() => {
+      return {
+        ...modelUnref.title.style,
+        fontSize: `${modelUnref.title.style.fontSize}px`
+      };
+    });
+
+    const descriptionStyle = computed(() => {
+      return {
+        ...modelUnref.description.style,
+        fontSize: `${modelUnref.description.style.fontSize}px`
+      };
+    });
+
     return {
       renderAction,
-      model
+      model,
+      titleStyle,
+      descriptionStyle
     };
   },
 
   render () {
     const {
-      model
+      model,
+      titleStyle,
+      descriptionStyle
     } = this;
     return (
       <div class='title-text' style={model.style}>
@@ -338,9 +356,9 @@ export default defineComponent({
             divider: model.bottomDivider
           }
         ]}>
-          <h1 class='title-text__title' style={model.title.style as CSSProperties}>{model.title.text}</h1>
+          <h1 class='title-text__title' style={titleStyle as CSSProperties}>{model.title.text}</h1>
           <p class='title-text__sub'>
-            <pre class='title-text__desc' style={model.description.style as CSSProperties}>{model.description.text}</pre>
+            <pre class='title-text__desc' style={descriptionStyle as CSSProperties}>{model.description.text}</pre>
           </p>
         </div>
       </div>
