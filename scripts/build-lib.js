@@ -3,8 +3,6 @@ const vueJsx = require('@vitejs/plugin-vue-jsx');
 const { defineConfig, build } = require('vite');
 const { resolve } = require('path');
 
-console.log(process.env.NODE_ENV);
-
 const buildConfig = defineConfig({
   plugins: [vue(), vueJsx()],
   build: {
