@@ -16,6 +16,7 @@ pnpm add -D free-core naive-ui
 
 基础功能预览[Preview](https://free.emesh.cloud)  
 基于[free-core](https://github.com/eamesh/free-core)的[Nutui](https://github.com/jdf2e/nutui)微页面编辑[Preview](https://nutui.emesh.cloud)
+基于[free-core](https://github.com/eamesh/free-core)的跨端微页面Taro小程序实现[free-taro](https://github.com/eamesh/emesh-taro)
 
 ## Example
 
