@@ -12,8 +12,8 @@ export function useAction () {
       <>
         <FreeActionTitle title='顶部导航' />
         <div class='free-action-form'>
-          <NA>功能待完善</NA>
-          <NColorPicker v-model:value={model.value.backgroundColor} />
+          <NA>背景颜色</NA>
+          <NColorPicker showAlpha={false} v-model:value={model.value.backgroundColor} />
         </div>
       </>
     );

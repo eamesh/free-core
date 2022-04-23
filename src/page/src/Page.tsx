@@ -100,7 +100,7 @@ export default defineComponent({
                         alignItems: 'center'
                       }}
                     >
-                      <NColorPicker size='small' v-model:value={modelUnref.backgroundColor} style={{
+                      <NColorPicker showAlpha={false} size='small' v-model:value={modelUnref.backgroundColor} style={{
                         width: '80px',
                         marginLeft: '12px'
                       }} />

@@ -274,7 +274,7 @@ export default defineComponent({
                       <NButton size='small' quaternary type='primary' onClick={() => {
                         modelUnref.title.style.color = '#323233';
                       }}>重置</NButton>
-                      <NColorPicker size='small' v-model:value={modelUnref.title.style.color} style={{
+                      <NColorPicker show size='small' v-model:value={modelUnref.title.style.color} style={{
                         width: '80px'
                       }} showAlpha={false} />
                     </NSpace>
