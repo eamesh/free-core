@@ -10,6 +10,7 @@ export interface FreePageProps {
   title: string;
   description: string;
   backgroundColor: string;
+  backgroundColorMode: 'default' | 'custom';
 }
 
 export default defineComponent({
@@ -18,22 +19,22 @@ export default defineComponent({
   props: fixedWidgetDataProps<FreePageProps>({
     title: '微页面标题',
     description: '',
-    backgroundColor: DEFAULT_COLOR
+    backgroundColor: DEFAULT_COLOR,
+    backgroundColorMode: 'default'
   }),
 
   setup (props) {
     const {
       pageStyleRef
     } = useFree();
-    const backgroundColorMode = ref('default');
 
     const model = ref(props.data);
     const modelUnref = unref(model);
 
     watch(
-      () => backgroundColorMode.value,
+      () => modelUnref.backgroundColorMode,
       () => {
-        backgroundColorMode.value === 'default' && (
+        modelUnref.backgroundColorMode === 'default' && (
           modelUnref.backgroundColor = DEFAULT_COLOR
         );
       }
@@ -77,7 +78,7 @@ export default defineComponent({
                   width: '100%',
                   flexDirection: 'row-reverse'
                 }}>
-                  <NRadioGroup v-model:value={backgroundColorMode.value} name="radiogroup">
+                  <NRadioGroup v-model:value={modelUnref.backgroundColorMode} name="radiogroup">
                     <NSpace align='center'>
                       <NRadio value='default' key='default'>
                         <NText>默认背景色</NText>
@@ -90,7 +91,7 @@ export default defineComponent({
                 </NSpace>
               </NFormItem>
               {
-                backgroundColorMode.value === 'custom'
+                modelUnref.backgroundColorMode === 'custom'
                   ? (
                   <>
                     <div

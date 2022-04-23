@@ -15,7 +15,8 @@ export const FreePageWidget: CoreWidget<FreePageProps> = {
   data: {
     title: '微页面标题',
     description: '',
-    backgroundColor: DEFAULT_COLOR
+    backgroundColor: DEFAULT_COLOR,
+    backgroundColorMode: 'default'
   }
 };
 
